@@ -24,6 +24,6 @@
   plugins: [],
 }</code>
 
-4. In pulled folder use command 
+4. In pulled folder use command - every time, when you want to work on project, you need to use this command
 
 <code>npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch</code>
