@@ -2,4 +2,5 @@ body{
     min-height: 100vh;
     display: grid;
     grid-template-rows: 1fr auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
