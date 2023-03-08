@@ -20,7 +20,7 @@
 	<nav class="fixed w-full top-0 z-50 px-2 sm:px-4 py-2.5 rounded bg-gradient-to-b from-amber-700 to-amber-800 text-white items-center border-solid border-b-2 border-amber-500">
 		<div class="container flex flex-wrap items-center justify-between mx-auto">
 			<div class="flex md:order-1">
-				<h1><a href="index.html">My Website</a></h1>
+				<h2><a href="index.html">My Website</a></h2>
 			</div>
 			
 			<div class="flex order-2 md:hidden">
@@ -34,10 +34,10 @@
 			
 			<div class="hidden order-3 items-center md:flex md:order-2" id="navbar-solid-bg">
 				<ul class="inline-flex">
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="#">Krmivo</a></li>
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="#">Hračky</a></li>
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="#">Príslušenstvo</a></li>
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="#">Kontakt</a></li>
+					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Krmivo</a></li>
+					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Hračky</a></li>
+					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Príslušenstvo</a></li>
+					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="contact.html">Kontakt</a></li>
 				</ul>
 			</div>
 
@@ -68,7 +68,9 @@
 				<svg class="w-8 mr-4 float-left" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 					<path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
 				</svg>
-				<input id="search" type="text" name="login" class="my-2 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 w-6/12 h-10 rounded-md p-2 text-lg" placeholder="">
+				<form id="word_search_form"action="">
+					<input form="word_search_form"id="search" type="text" name="search" class="my-2 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 w-6/12 h-10 rounded-md p-2 text-lg" placeholder="">
+				</form>
 			</div>
 		</form>
 		<div class="flex justify-center mb-6">
@@ -80,27 +82,27 @@
 			<div class="w-10/12">
 				<div class="grid lg:grid-cols-3 place-items-center md:place-items-start md:grid-cols-2 sm:grid-cols-1">
 					<!-- ONE PRODUCT -->
-					<div class="mt-6 bg-gradient-to-b from-amber-700 to-amber-800 rounded md:w-10/12 w-2/3 h-96">
+					<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-96">
 						<img src="assets/images/dog_food.jpg" alt="dog_food" class="p-4 w-full object-cover h-2/3">
-						<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
-						<p class="text-2xl pt-2 pl-4 font-bold">2,99€</p>
+						<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
+						<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
 						<a href="">
 							<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
 						</a>
 					</div>		
 					<!-- END OF ONE PRODUCT -->
-					<div class="mt-6 bg-gradient-to-b from-amber-700 to-amber-800 rounded md:w-10/12 w-2/3 h-96">
+					<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-96">
 						<img src="assets/images/monkey.jpg" alt="dog_food" class="p-4 w-full object-cover h-2/3">
-						<h2 class="text-l pl-4">Plyšová opica</h2>
-						<p class="text-2xl pt-2 pl-4 font-bold">10,99€</p>
+						<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
+						<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
 						<a href="">
 							<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
 						</a>
 					</div>	
-					<div class="mt-6 bg-gradient-to-b from-amber-700 to-amber-800 rounded md:w-10/12 w-2/3 h-96">
+					<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-96">
 						<img src="assets/images/bird_cage.jpg" alt="dog_food" class="p-4 w-full object-cover h-2/3">
-						<h2 class="text-l pl-4">Klietka</h2>
-						<p class="text-2xl pt-2 pl-4 font-bold">5,99€</p>
+						<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
+						<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
 						<a href="">
 							<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
 						</a>
