@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<html>
+<head>
+	<title>Pet Shop</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta name="description" content="Internetový obchod s potrebami pre zvieratá">
+	<meta name="keywords" content="eshop, pets, food, toys, accessorities, dog, cat">
+	<meta http-equiv='content-language' content='sk-sk'>
+    
+	<!-- CSS stylesheets -->
+	<link href="../dist/output.css" rel="stylesheet">
+	<link href="assets/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+	
+	<!-- Navbar -->
+	<nav class="fixed w-full top-0 z-50 px-2 sm:px-4 py-2.5 rounded bg-gradient-to-b from-amber-700 to-amber-800 text-white items-center border-solid border-b-2 border-amber-500">
+		<div class="container flex flex-wrap items-center justify-between mx-auto">
+			<div class="flex md:order-1">
+				<h2><a href="index.html">My Website</a></h2>
+			</div>
+			
+			<div class="flex order-2 md:hidden">
+				<a href="#" class="mx-3"><i class="text-lg align-bottom fa-sharp fa-solid fa-cart-shopping"></i></a>
+				<a href="#" class="mx-3"><i class="text-lg align-bottom fa-sharp fa-solid fa-user"></i></a>
+				<button data-collapse-toggle="navbar-solid-bg" type="button" class="mobile-menu-button text-xl inline-flex items-center p-2 ml-3 text-white rounded-lg md:hidden hover:bg-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-900" aria-controls="navbar-solid-bg" aria-expanded="false">
+					<span class="sr-only">Open main menu</span>
+					<i class="align-bottom fa-sharp fa-solid fa-bars"></i>
+				</button>
+			</div>
+			
+			<div class="hidden order-3 items-center md:flex md:order-2" id="navbar-solid-bg">
+				<ul class="inline-flex">
+					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Krmivo</a></li>
+					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Hračky</a></li>
+					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Príslušenstvo</a></li>
+					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="contact.html">Kontakt</a></li>
+				</ul>
+			</div>
+
+			<div class="hidden float-right items-center md:flex md:float-none md:order-3">
+				<ul class="inline-flex">
+					<li class="mx-3"><a href="#"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
+					<li class="mx-3"><a href="login/login.html"><i class="fa-sharp fa-solid fa-user"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="mobile-menu hidden order-3 items-center md:hidden md:order-2 mt-5" id="navbar-solid-bg">
+			<ul class="">
+				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Krmivo</li></a>
+				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Hračky</li></a>
+				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Príslušenstvo</li></a>
+				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Kontakt</li></a>
+			</ul>
+		</div>
+	</nav>
+	<!--// -->
+
+    <section class="mt-24">
+        <div class="flex justify-center ">
+            <div class="bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-144 grid grid-cols-2">
+                <img src="assets/images/dog_food.jpg" alt="dog_food" class="p-4 w-full object-cover h-full">
+                <div class="mt-4 relative">
+                    <h1 class="text-3xl w-11/12 pl-4 text-white font-bold">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h1>
+                    <p class="text-3xl mt-6 pl-4 font-semibold text-white">2,99€</p>
+                    <p class="text-white text-xl pl-4 mt-6 font-semibold">Dostupnosť: Na skalde</p>
+                    <p class="text-white w-11/12 pl-4 mt-4">Miska je kvalitná nádoba na vodu pre Vášho miláčika, tvar misky a spodné gumové prevedenie zabraňuje nechcenému pohybu a možnosti vyliatia tekutiny. Materiál dobre umývateľný s elegantným nerezovýn vzhľadom do interiéru a exteriéru.</p>
+                    <input from="search_form" type="number" name="high_price" class="w-16 bg-neutral-200 placeholder-gray-500 rounded-md px-2 left-6 bottom-16 absolute" type="text" value="1">
+                    <a href="">
+                        <button class="bg-green-500 hover:bg-green-300 hover:text-green-500 text-white font-bold py-2 px-4 rounded-full ml-4 mt-6 bottom-4 absolute">Kúpiť ></button>
+                    </a>
+
+                </div>
+            </div>		
+        </div>
+    </section>
+    <section class="mt-24">
+        <div class="flex justify-center">
+            <div class="grid-cols-3 grid w-10/12">
+                <div class="col-span-2">
+                    <h2 class="text-3xl font-bold">Podrobnosti</h2>
+                    <p>Miska je kvalitná nádoba na vodu pre Vášho miláčika, tvar misky a spodné gumové prevedenie zabraňuje nechcenému pohybu a možnosti vyliatia tekutiny. Materiál dobre umývateľný s elegantným nerezovýn vzhľadom do interiéru a exteriéru.</p>
+                </div>
+                <div>
+                    <img src="assets/images/dog_food.jpg" alt="dog_food" class="p-4 w-full object-cover h-2/3">
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="mb-24">
+        <!-- Another products-->
+        <div class="flex justify-center">
+            <div class="w-10/12">
+				<div class="grid lg:grid-cols-3 place-items-center md:place-items-start md:grid-cols-2 sm:grid-cols-1">
+                    <h2 class="col-span-3 text-3xl font-bold">Podrobnosti</h2>
+					<!-- ONE PRODUCT -->
+					<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-96 transition duration-500 hover:scale-110">
+						<img src="assets/images/dog_food.jpg" alt="dog_food" class="p-4 w-full object-cover h-2/3">
+						<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
+						<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
+						<a href="">
+							<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+						</a>
+					</div>		
+					<!-- END OF ONE PRODUCT -->
+					<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-96 transition duration-500 hover:scale-110">
+						<img src="assets/images/monkey.jpg" alt="dog_food" class="p-4 w-full object-cover h-2/3">
+						<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
+						<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
+						<a href="">
+							<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+						</a>
+					</div>	
+					<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-96 transition duration-500 hover:scale-110">
+						<img src="assets/images/bird_cage.jpg" alt="dog_food" class="p-4 w-full object-cover h-2/3">
+						<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
+						<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
+						<a href="">
+							<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+						</a>
+					</div>		
+				</div>
+
+			</div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-t from-amber-700 to-amber-800 text-white border-solid border-t-2 border-amber-500">
+        <div>
+            
+        </div>
+        <div class="text-center align-bottom py-5">
+            <p>2023 © FIIT</p>
+        </div>
+    </footer>
+    <!-- // -->
+
+
+</body>
+    <!-- JS Scripts -->
+	<!-- Fafa icons -->
+	<script src="https://kit.fontawesome.com/1d5e2079b1.js" crossorigin="anonymous"></script>
+
+	<!-- Mobile, button -->
+	<script>
+		const btn = document.querySelector("button.mobile-menu-button");
+		const menu = document.querySelector(".mobile-menu");
+		
+		btn.addEventListener("click", () => {
+		menu.classList.toggle("hidden");
+		});
+	</script>
+</html>

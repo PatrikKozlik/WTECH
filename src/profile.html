@@ -63,61 +63,38 @@
     <!-- Admin zona na mobile bude spravena cez modaly -->
 	<section class="mt-20">
 		<h1 class="text-3xl font-extrabold text-center"><span class="text-transparent bg-clip-text bg-gradient-to-r to-amber-700 from-amber-300">Môj</span> profil</h1>
-    
-        <div>
-            <table class="border-separate border border-slate-500 border-amber-500 mx-auto mt-6 ml-2 mr-2 sm:ml-16 sm:mr-16">
-                <thead class="bg-gradient-to-b to-amber-700 from-amber-400 text-white">
-                  <tr>
-                    <th class="border border-slate-600 p-2">Údaje</th>
-                    <th class="border border-slate-600 p-2">Hodnoty</th>
-                    <th class="border border-slate-600 p-2">Úpravy</th>
-                 </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">Meno</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">Fero</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-                  </tr>
-                  <tr>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">Priezvysko</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">Novotný</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-                  </tr>
-                  <tr>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">Ulica</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">Hlavna</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-                  </tr>
-                  <tr>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">Mesto</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">Bratislava</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-                  </tr>
-                  <tr>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">PSC</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">811 11</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-                  </tr>
-                  <tr>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">Telefonne číslo</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">0900 111 222</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-                  </tr>
-                  <tr>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">E-mail</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">fero.novotny@gmail.com</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-                  </tr>
-                  <tr>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">Prihlasovacie meno</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1">Ferko je boh</td>
-                    <td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-        </div>
+		
+		<div class="flex justify-center">
+			<form action="" class="w-10/12">
+				<div class="grid grid-cols-1 w-10/12">
+					<label class="font-bold w-full  py-1">Meno</label>
+					<input name="first_name" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Fero">
+										
+					<label class="w-full font-bold py-1">Priezvysko</label>
+					<input name="second_name" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Novotný">
+					
+					<label class=" w-full font-bold py-1">Ulica</label>
+					<input name="street" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Hlavna">
+					
+					<label class=" w-full font-bold py-1">Mesto</label>
+					<input name="city" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Bratislava">
+					
+					<label class=" w-full font-bold py-1">PSC</label>
+					<input name="post_code" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="811 11">
+					
+					<label class=" w-full font-bold py-1">Telefonne číslo</label>
+					<input name="phone_number" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="0900 111 222">
+					
+					<label class=" w-full font-bold py-1">E-mail</label>
+					<input name="email" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="fero.novotny@gmail.com">
+					
+					<label class=" w-full font-bold py-1">Prihlasovacie meno</label>
+					<input name="login_name" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Ferko je boh">
+
+					<button id="save" class="w-36 mb-5 mt-2 bg-green-500 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full float-right">Uložiť zmeny</button>
+				</div>
+			</form>
+		</div>
 
     </section>
 
