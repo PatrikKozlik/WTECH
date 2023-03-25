@@ -125,23 +125,22 @@
 					</div>
 
 
-					<div>
-						<a href="cart2.html">
-							<button type="button" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">
-								<i class="fa fa-arrow-left" aria-hidden="true"></i>
-								Späť
-							</button>
-						</a>
-						
-						<a href="#" class="float-right">
-							<button type="submit" class="bg-green-500 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">
-								Pokračovať
-								<i class="fa fa-arrow-right" aria-hidden="true"></i>
-							</button>
-						</a>
-					</div>
-
+					
 				</form>
+				<div>
+					<a href="cart2.html">
+						<button type="button" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">
+							<i class="fa fa-arrow-left" aria-hidden="true"></i>
+							Späť
+						</button>
+					</a>
+					
+					<button id="save_button" class="bg-green-500 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full float-right">
+						Pokračovať
+						<i class="fa fa-arrow-right" aria-hidden="true"></i>
+					</button>
+					
+				</div>
             </div>
 		</div>
     </section>
@@ -158,6 +157,26 @@
 	</footer>
 	<!-- // -->
 
+	<!-- Modal content -->
+	<div id="saveModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="bg-stone-800/70 items-center justify-center fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full">
+		<div class="relative w-full h-full max-w-2xl md:h-auto">
+			<div class="relative bg-gradient-to-t to-amber-700 from-amber-500 rounded-lg shadow border-2 border-amber-500">
+				<div class="flex items-start justify-between p-4 border-b-4 rounded-t border-white">
+					<h3 class="text-xl font-semibold text-white">
+						Chcete si uložiť vaše údaje do vášho profilu?
+					</h3>
+					<button onclick="document.getElementById('saveModal').style.display='none'" class="text-white font-bold bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="staticModal">
+						<i class="fa fa-times text-2xl" aria-hidden="true"></i> 
+					</button>
+				</div>
+				<div class="flex items-center p-6 space-x-2 border-t-4 border-gray-200 rounded-b">
+					<button form="edit_pruduct_form" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Nie</button>
+					<button form="edit_pruduct_form" class="bg-green-500 hover:bg-green-300 hover:text-green-500 text-white font-bold py-2 px-4 rounded-full">Áno</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 </body>
 
@@ -173,5 +192,17 @@
 		btn.addEventListener("click", () => {
 		menu.classList.toggle("hidden");
 		});
+	</script>
+	<!-- Alert box for saving data-->
+	<script>
+		const save = document.querySelector("#save_button");
+        const modal = document.querySelector("#saveModal");
+        
+        save.addEventListener("click", () => {
+            modal.style.display = "flex";
+        });
+        addEventListener("resize", (event) => {
+            modal.style.display = "none";
+        });
 	</script>
 </html>
