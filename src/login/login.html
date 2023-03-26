@@ -1,94 +1,93 @@
 <!DOCTYPE html>
 <html lang="sk">
 
-<html>
-<head>
-	<title>Pet Shop</title>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<meta name="description" content="Internetový obchod s potrebami pre zvieratá">
-	<meta name="keywords" content="eshop, pets, food, toys, accessorities, dog, cat">
-	<meta http-equiv='content-language' content='sk-sk'>
-    
-	<!-- CSS stylesheets -->
-	<link href="../../dist/output.css" rel="stylesheet">
-    <link href="../assets/css/style.css" rel="stylesheet">
+	<head>
+		<title>Pet Shop</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta name="description" content="Internetový obchod s potrebami pre zvieratá">
+		<meta name="keywords" content="eshop, pets, food, toys, accessorities, dog, cat">
+		<meta http-equiv='content-language' content='sk-sk'>
+		
+		<!-- CSS stylesheets -->
+		<link href="../../dist/output.css" rel="stylesheet">
+		<link href="../assets/css/style.css" rel="stylesheet">
 
-</head>
-<body>
-	
-	<!-- Navbar -->
-	<nav class="fixed w-full top-0 z-50 px-2 sm:px-4 py-2.5 rounded bg-gradient-to-b from-amber-700 to-amber-800 text-white items-center border-solid border-b-2 border-amber-500">
-		<div class="container flex flex-wrap items-center justify-between mx-auto">
-			<div class="flex md:order-1">
-				<h1><a href="../index.html">My Website</a></h1>
+	</head>
+	<body>
+		
+		<!-- Navbar -->
+		<nav class="fixed w-full top-0 z-50 px-2 sm:px-4 py-2.5 rounded bg-gradient-to-b from-amber-700 to-amber-800 text-white items-center border-solid border-b-2 border-amber-500">
+			<div class="container flex flex-wrap items-center justify-between mx-auto">
+				<div class="flex md:order-1">
+					<h1><a href="../index.html">My Website</a></h1>
+				</div>
+				
+				<div class="flex order-2 md:hidden">
+					<a href="../cart1.html" class="mx-3"><i class="text-lg align-bottom fa-sharp fa-solid fa-cart-shopping"></i></a>
+					<a href="login.html" class="mx-3"><i class="text-lg align-bottom fa-sharp fa-solid fa-user"></i></a>
+					<button data-collapse-toggle="navbar-solid-bg" type="button" class="mobile-menu-button text-xl inline-flex items-center p-2 ml-3 text-white rounded-lg md:hidden hover:bg-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-900" aria-controls="navbar-solid-bg" aria-expanded="false">
+						<span class="sr-only">Open main menu</span>
+						<i class="align-bottom fa-sharp fa-solid fa-bars"></i>
+					</button>
+				</div>
+				
+				<div class="hidden order-3 items-center md:flex md:order-2" id="navbar-solid-bg">
+					<ul class="inline-flex">
+						<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="../category.html">Krmivo</a></li>
+						<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="../category.html">Hračky</a></li>
+						<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="../category.html">Príslušenstvo</a></li>
+						<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="../contact.html">Kontakt</a></li>
+					</ul>
+				</div>
+
+				<div class="hidden float-right items-center md:flex md:float-none md:order-3">
+					<ul class="inline-flex">
+						<li class="mx-3"><a href="../cart1.html"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
+						<li class="mx-3"><a href="login.html"><i class="fa-sharp fa-solid fa-user"></i></a></li>
+					</ul>
+				</div>
 			</div>
-			
-			<div class="flex order-2 md:hidden">
-				<a href="../cart1.html" class="mx-3"><i class="text-lg align-bottom fa-sharp fa-solid fa-cart-shopping"></i></a>
-				<a href="login.html" class="mx-3"><i class="text-lg align-bottom fa-sharp fa-solid fa-user"></i></a>
-				<button data-collapse-toggle="navbar-solid-bg" type="button" class="mobile-menu-button text-xl inline-flex items-center p-2 ml-3 text-sm text-white rounded-lg md:hidden hover:bg-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-900" aria-controls="navbar-solid-bg" aria-expanded="false">
-					<span class="sr-only">Open main menu</span>
-					<i class="align-bottom fa-sharp fa-solid fa-bars"></i>
-				</button>
-			</div>
-			
-			<div class="hidden order-3 items-center md:flex md:order-2" id="navbar-solid-bg">
-				<ul class="inline-flex">
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="../category.html">Krmivo</a></li>
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="../category.html">Hračky</a></li>
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="../category.html">Príslušenstvo</a></li>
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="../contact.html">Kontakt</a></li>
+
+			<div class="mobile-menu hidden order-3 items-center md:hidden md:order-2 mt-5" id="navbar-solid-bg">
+				<ul class="">
+					<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Krmivo</li></a>
+					<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Hračky</li></a>
+					<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Príslušenstvo</li></a>
+					<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Kontakt</li></a>
 				</ul>
 			</div>
+		</nav>
+		<!--// -->
 
-			<div class="hidden float-right items-center md:flex md:float-none md:order-3">
-				<ul class="inline-flex">
-					<li class="mx-3"><a href="../cart1.html"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
-					<li class="mx-3"><a href="login.html"><i class="fa-sharp fa-solid fa-user"></i></a></li>
-				</ul>
+		<section class="mt-32">
+			<div class="flex h-fit justify-center mb-8">
+				<div class="w-5/6 grid justify-items-center sm:w-2/6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500">
+					<h2 class="font-bold text-white text-3xl m-3 text-center uppercase">Prihláste sa</h2>
+					<form action="" class="w-full">
+						<div class="inline-grid justify-items-center w-full p-5">
+							<input type="text" name="login" class="my-2 w-full h-10 rounded-md p-2 text-lg" placeholder="Login">
+							<input type="password" name="password" class="my-2 w-full h-10 rounded-md p-2 text-lg" placeholder="Password">
+							<a href="regsitration.html" class="underline text-white hover:text-stone-200 mb-2 float-right">Registrovať sa</a>
+							<button type="submit" name="submit" value="submit" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Prihlásiť sa</button>
+						</div>
+					</form>
+				</div>
 			</div>
-		</div>
+		</section>
 
-		<div class="mobile-menu hidden order-3 items-center md:hidden md:order-2 mt-5" id="navbar-solid-bg">
-			<ul class="">
-				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Krmivo</li></a>
-				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Hračky</li></a>
-				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Príslušenstvo</li></a>
-				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Kontakt</li></a>
-			</ul>
-		</div>
-	</nav>
-	<!--// -->
-
-	<section class="mt-32">
-		<div class="flex h-fit justify-center mb-8">
-			<div class="w-5/6 grid justify-items-center sm:w-2/6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500">
-				<h2 class="font-bold text-white text-3xl m-3 text-center uppercase">Prihláste sa</h2>
-				<form action="" class="w-full">
-					<div class="inline-grid justify-items-center w-full p-5">
-						<input type="text" name="login" class="my-2 w-full h-10 rounded-md p-2 text-lg" placeholder="Login">
-						<input type="password" name="password" class="my-2 w-full h-10 rounded-md p-2 text-lg" placeholder="Password">
-						<a href="regsitration.html" class="underline text-white hover:text-stone-200 mb-2 float-right">Registrovať sa</a>
-						<button type="submit" name="submit" value="submit" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Prihlásiť sa</button>
-					</div>
-				</form>
+		<!-- Footer -->
+		<footer class="bg-gradient-to-t from-amber-700 to-amber-800 text-white border-solid border-t-2 border-amber-500">
+			<div>
+				
 			</div>
-		</div>
-    </section>
-
-	<!-- Footer -->
-	<footer class="bg-gradient-to-t from-amber-700 to-amber-800 text-white border-solid border-t-2 border-amber-500">
-		<div>
-			
-		</div>
-		<div class="text-center align-bottom py-5">
-			<p>2023 © FIIT</p>
-		</div>
-	</footer>
-	<!-- // -->
+			<div class="text-center align-bottom py-5">
+				<p>2023 © FIIT</p>
+			</div>
+		</footer>
+		<!-- // -->
 
 
-</body>
+	</body>
 
 	<!-- JS Scripts -->
 	<!-- Fafa icons -->

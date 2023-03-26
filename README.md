@@ -29,6 +29,9 @@
 <code>npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch</code>
 
 # Additional packages and extends needed for all features
+
+Add these lines to your tailwind.config.js
+
 1. Spacing extended
 
 <code>extend: {

@@ -1,147 +1,144 @@
 <!DOCTYPE html>
 <html lang="sk">
 
-<html>
-<head>
-	<title>Pet Shop</title>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<meta name="description" content="Internetový obchod s potrebami pre zvieratá">
-	<meta name="keywords" content="eshop, pets, food, toys, accessorities, dog, cat">
-	<meta http-equiv='content-language' content='sk-sk'>
-    
-	<!-- CSS stylesheets -->
-	<link href="../dist/output.css" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-
-</head>
-<body>
-	
-	<!-- Navbar -->
-	<nav class="fixed w-full top-0 z-50 px-2 sm:px-4 py-2.5 rounded rounded bg-gradient-to-b from-amber-700 to-amber-800 text-white items-center border-solid border-b-2 border-amber-500">
-		<div class="container flex flex-wrap items-center justify-between mx-auto">
-			<div class="flex md:order-1">
-				<h1><a href="index.html">My Website</a></h1>
-			</div>
-			
-			<div class="flex order-2 md:hidden">
-				<a href="#" class="mx-3"><i class="text-lg align-bottom fa-sharp fa-solid fa-cart-shopping"></i></a>
-				<a href="#" class="mx-3"><i class="text-lg align-bottom fa-sharp fa-solid fa-user"></i></a>
-				<button data-collapse-toggle="navbar-solid-bg" type="button" class="mobile-menu-button text-xl inline-flex items-center p-2 ml-3 text-sm text-white rounded-lg md:hidden hover:bg-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-900" aria-controls="navbar-solid-bg" aria-expanded="false">
-					<span class="sr-only">Open main menu</span>
-					<i class="align-bottom fa-sharp fa-solid fa-bars"></i>
-				</button>
-			</div>
-			
-			<div class="hidden order-3 items-center md:flex md:order-2" id="navbar-solid-bg">
-				<ul class="inline-flex">
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Krmivo</a></li>
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Hračky</a></li>
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Príslušenstvo</a></li>
-					<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="contact.html">Kontakt</a></li>
-				</ul>
-			</div>
-
-			<div class="hidden float-right items-center md:flex md:float-none md:order-3">
-				<ul class="inline-flex">
-					<li class="mx-3"><a href="cart1.html"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
-					<li class="mx-3"><a href="login/login.html"><i class="fa-sharp fa-solid fa-user"></i></a></li>
-				</ul>
-			</div>
-		</div>
-
-		<div class="mobile-menu hidden order-3 items-center md:hidden md:order-2 mt-5" id="navbar-solid-bg">
-			<ul class="">
-				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Krmivo</li></a>
-				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Hračky</li></a>
-				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Príslušenstvo</li></a>
-				<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Kontakt</li></a>
-			</ul>
-		</div>
-	</nav>
-	<!--// -->
-
-    <!-- Admin zona na mobile bude spravena cez modaly -->
-	<section class="mt-20">
-		<h1 class="text-3xl font-extrabold text-center"><span class="text-transparent bg-clip-text bg-gradient-to-r to-amber-700 from-amber-300">Môj</span> profil</h1>
+	<head>
+		<title>Pet Shop</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta name="description" content="Internetový obchod s potrebami pre zvieratá">
+		<meta name="keywords" content="eshop, pets, food, toys, accessorities, dog, cat">
+		<meta http-equiv='content-language' content='sk-sk'>
 		
-		<div class="flex justify-center">
-			<form action="" class="w-10/12">
-				<div class="grid grid-cols-1 w-10/12">
-					<label class="font-bold w-full  py-1">Meno</label>
-					<input name="first_name" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Fero">
-										
-					<label class="w-full font-bold py-1">Priezvisko</label>
-					<input name="second_name" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Novotný">
-					
-					<label class=" w-full font-bold py-1">Ulica</label>
-					<input name="street" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Hlavna">
-					
-					<label class=" w-full font-bold py-1">Mesto</label>
-					<input name="city" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Bratislava">
-					
-					<label class=" w-full font-bold py-1">PSC</label>
-					<input name="post_code" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="811 11">
-					
-					<label class=" w-full font-bold py-1">Telefonne číslo</label>
-					<input name="phone_number" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="0900 111 222">
-					
-					<label class=" w-full font-bold py-1">E-mail</label>
-					<input name="email" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="fero.novotny@gmail.com">
-					
-					<label class=" w-full font-bold py-1">Prihlasovacie meno</label>
-					<input name="login_name" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Ferko je boh">
+		<!-- CSS stylesheets -->
+		<link href="../dist/output.css" rel="stylesheet">
+		<link href="assets/css/style.css" rel="stylesheet">
 
-					<button id="save" class="w-36 mb-5 mt-2 bg-green-500 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full float-right">Uložiť zmeny</button>
+	</head>
+	
+	<body>
+		
+		<!-- Navbar -->
+		<nav class="fixed w-full top-0 z-50 px-2 sm:px-4 py-2.5 rounded bg-gradient-to-b from-amber-700 to-amber-800 text-white items-center border-solid border-b-2 border-amber-500">
+			<div class="container flex flex-wrap items-center justify-between mx-auto">
+				<div class="flex md:order-1">
+					<h1><a href="index.html">My Website</a></h1>
 				</div>
-			</form>
-		</div>
-
-    </section>
-
-
-	<!-- Modal content -->
-	<div id="editModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="bg-stone-800/70 items-center justify-center fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal h-full">
-		<div class="relative w-full h-full max-w-2xl md:h-auto">
-			<div class="relative bg-gradient-to-t to-amber-700 from-amber-500 rounded-lg shadow border-2 border-amber-500">
-				<div class="flex items-start justify-between p-4 border-b-4 rounded-t border-white">
-					<h3 class="text-xl font-semibold text-white">
-						Upraviť produkt
-					</h3>
-					<button onclick="document.getElementById('editModal').style.display='none'" class="text-white font-bold bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="staticModal">
-						<i class="fa fa-times text-2xl" aria-hidden="true"></i> 
+				
+				<div class="flex order-2 md:hidden">
+					<a href="#" class="mx-3"><i class="text-lg align-bottom fa-sharp fa-solid fa-cart-shopping"></i></a>
+					<a href="#" class="mx-3"><i class="text-lg align-bottom fa-sharp fa-solid fa-user"></i></a>
+					<button data-collapse-toggle="navbar-solid-bg" type="button" class="mobile-menu-button text-xl inline-flex items-center p-2 ml-3 text-white rounded-lg md:hidden hover:bg-amber-900 focus:outline-none focus:ring-2 focus:ring-amber-900" aria-controls="navbar-solid-bg" aria-expanded="false">
+						<span class="sr-only">Open main menu</span>
+						<i class="align-bottom fa-sharp fa-solid fa-bars"></i>
 					</button>
 				</div>
-				<div class="p-6 space-y-6">
-					<p class="leading-relaxed font-bold text-2xl text-center text-white">
-						Zmena údaju
-					</p>
-					<form id="edit_pruduct_form" action="">
-						<label for="name">Nová hodnota</label>
-						<input form="edit_pruduct_form" type="text" name="name" class="my-2 w-full h-10 rounded-md p-2 text-lg" required>
-						
-					</form>
+				
+				<div class="hidden order-3 items-center md:flex md:order-2" id="navbar-solid-bg">
+					<ul class="inline-flex">
+						<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Krmivo</a></li>
+						<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Hračky</a></li>
+						<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="category.html">Príslušenstvo</a></li>
+						<li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="contact.html">Kontakt</a></li>
+					</ul>
 				</div>
-				<div class="flex items-center p-6 space-x-2 border-t-4 border-gray-200 rounded-b border-white">
-					<button form="edit_pruduct_form" class="bg-green-500 hover:bg-green-300 hover:text-green-500 text-white font-bold py-2 px-4 rounded-full">Uložiť zmeny</button>
-					<button onclick="document.getElementById('editModal').style.display='none'" class="bg-stone-600 hover:bg-stone-400 hover:text-stone-600 text-white font-bold py-2 px-4 rounded-full">Zrušiť</button>
+
+				<div class="hidden float-right items-center md:flex md:float-none md:order-3">
+					<ul class="inline-flex">
+						<li class="mx-3"><a href="cart1.html"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
+						<li class="mx-3"><a href="login/login.html"><i class="fa-sharp fa-solid fa-user"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="mobile-menu hidden order-3 items-center md:hidden md:order-2 mt-5" id="navbar-solid-bg">
+				<ul class="">
+					<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Krmivo</li></a>
+					<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Hračky</li></a>
+					<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Príslušenstvo</li></a>
+					<a href="#"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Kontakt</li></a>
+				</ul>
+			</div>
+		</nav>
+		<!--// -->
+
+		<!-- Admin zona na mobile bude spravena cez modaly -->
+		<section class="mt-20">
+			<h1 class="text-3xl font-extrabold text-center"><span class="text-transparent bg-clip-text bg-gradient-to-r to-amber-700 from-amber-300">Môj</span> profil</h1>
+			
+			<div class="flex justify-center">
+				<form action="" class="w-10/12">
+					<div class="grid grid-cols-1 w-10/12">
+						<label class="font-bold w-full  py-1">Meno</label>
+						<input name="first_name" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Fero">
+											
+						<label class="w-full font-bold py-1">Priezvisko</label>
+						<input name="second_name" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Novotný">
+						
+						<label class=" w-full font-bold py-1">Ulica</label>
+						<input name="street" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Hlavna">
+						
+						<label class=" w-full font-bold py-1">Mesto</label>
+						<input name="city" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="Bratislava">
+						
+						<label class=" w-full font-bold py-1">PSC</label>
+						<input name="post_code" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="811 11">
+						
+						<label class=" w-full font-bold py-1">Telefonne číslo</label>
+						<input name="phone_number" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="0900 111 222">
+						
+						<label class=" w-full font-bold py-1">E-mail</label>
+						<input name="email" class="focus:border-amber-500 focus:outline-none mb-5 border-2 border-amber-700 lg:w-1/3 sm:w-1/2 w-full bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" value="fero.novotny@gmail.com">
+
+						<button id="save" class="w-36 mb-5 mt-2 bg-green-500 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full float-right">Uložiť zmeny</button>
+					</div>
+				</form>
+			</div>
+
+		</section>
+
+
+		<!-- Modal content -->
+		<div id="editModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="bg-stone-800/70 items-center justify-center fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal h-full">
+			<div class="relative w-full h-full max-w-2xl md:h-auto">
+				<div class="relative bg-gradient-to-t to-amber-700 from-amber-500 rounded-lg shadow border-2 border-amber-500">
+					<div class="flex items-start justify-between p-4 border-b-4 rounded-t border-white">
+						<h3 class="text-xl font-semibold text-white">
+							Upraviť produkt
+						</h3>
+						<button onclick="document.getElementById('editModal').style.display='none'" class="text-white font-bold bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="staticModal">
+							<i class="fa fa-times text-2xl" aria-hidden="true"></i> 
+						</button>
+					</div>
+					<div class="p-6 space-y-6">
+						<p class="leading-relaxed font-bold text-2xl text-center text-white">
+							Zmena údaju
+						</p>
+						<form id="edit_pruduct_form" action="">
+							<label for="name">Nová hodnota</label>
+							<input form="edit_pruduct_form" type="text" name="name" class="my-2 w-full h-10 rounded-md p-2 text-lg" required>
+							
+						</form>
+					</div>
+					<div class="flex items-center p-6 space-x-2 border-t-4 border-gray-200 rounded-b">
+						<button form="edit_pruduct_form" class="bg-green-500 hover:bg-green-300 hover:text-green-500 text-white font-bold py-2 px-4 rounded-full">Uložiť zmeny</button>
+						<button onclick="document.getElementById('editModal').style.display='none'" class="bg-stone-600 hover:bg-stone-400 hover:text-stone-600 text-white font-bold py-2 px-4 rounded-full">Zrušiť</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Footer -->
-	<footer class="bg-gradient-to-t from-amber-700 to-amber-800 text-white border-solid border-t-2 border-amber-500">
-		<div>
-			
-		</div>
-		<div class="text-center align-bottom py-5">
-			<p>2023 © FIIT</p>
-		</div>
-	</footer>
-	<!-- // -->
+		<!-- Footer -->
+		<footer class="bg-gradient-to-t from-amber-700 to-amber-800 text-white border-solid border-t-2 border-amber-500">
+			<div>
+				
+			</div>
+			<div class="text-center align-bottom py-5">
+				<p>2023 © FIIT</p>
+			</div>
+		</footer>
+		<!-- // -->
 
 
-</body>
+	</body>
 
 	<!-- JS Scripts -->
 	<!-- Fafa icons -->
