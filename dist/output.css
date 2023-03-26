@@ -836,10 +836,6 @@ video {
   height: 100%;
 }
 
-.h-auto {
-  height: auto;
-}
-
 .w-1\/12 {
   width: 8.333333%;
 }
@@ -1590,16 +1586,16 @@ video {
     height: auto;
   }
 
-  .md\:h-full {
-    height: 100%;
-  }
-
   .md\:w-10\/12 {
     width: 83.333333%;
   }
 
   .md\:w-3\/4 {
     width: 75%;
+  }
+
+  .md\:w-2\/6 {
+    width: 33.333333%;
   }
 
   .md\:grid-cols-2 {
@@ -1672,6 +1668,10 @@ video {
 
   .lg\:w-2\/3 {
     width: 66.666667%;
+  }
+
+  .lg\:w-2\/6 {
+    width: 33.333333%;
   }
 
   .lg\:grid-cols-3 {
