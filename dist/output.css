@@ -575,10 +575,6 @@ video {
   position: relative;
 }
 
-.bottom-16 {
-  bottom: 4rem;
-}
-
 .bottom-20 {
   bottom: 5rem;
 }
@@ -627,14 +623,6 @@ video {
   grid-column: span 3 / span 3;
 }
 
-.col-span-4 {
-  grid-column: span 4 / span 4;
-}
-
-.col-start-6 {
-  grid-column-start: 6;
-}
-
 .float-right {
   float: right;
 }
@@ -673,10 +661,6 @@ video {
 .my-3 {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
-}
-
-.-mt-4 {
-  margin-top: -1rem;
 }
 
 .mb-10 {
@@ -795,6 +779,10 @@ video {
   height: 2.5rem;
 }
 
+.h-144 {
+  height: 36rem;
+}
+
 .h-16 {
   height: 4rem;
 }
@@ -805,10 +793,6 @@ video {
 
 .h-20 {
   height: 5rem;
-}
-
-.h-28 {
-  height: 7rem;
 }
 
 .h-3\/5 {
@@ -876,14 +860,6 @@ video {
   width: 5rem;
 }
 
-.w-28 {
-  width: 7rem;
-}
-
-.w-3\/4 {
-  width: 75%;
-}
-
 .w-36 {
   width: 9rem;
 }
@@ -938,10 +914,6 @@ video {
 
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-cols-6 {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1290,10 +1262,6 @@ video {
   padding-bottom: 6rem;
 }
 
-.pb-4 {
-  padding-bottom: 1rem;
-}
-
 .pl-4 {
   padding-left: 1rem;
 }
@@ -1445,6 +1413,13 @@ video {
 
 .duration-500 {
   transition-duration: 500ms;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .hover\:scale-110:hover {
@@ -1619,10 +1594,6 @@ video {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-1 {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-  }
-
   .md\:place-items-start {
     place-items: start;
   }
@@ -1640,6 +1611,13 @@ video {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
+
+  .md\:line-clamp-5 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -1650,6 +1628,10 @@ video {
   .lg\:mx-8 {
     margin-left: 2rem;
     margin-right: 2rem;
+  }
+
+  .lg\:ml-17\.5 {
+    margin-left: 17.5%;
   }
 
   .lg\:mt-14 {
