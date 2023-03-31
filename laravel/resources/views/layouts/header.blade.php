@@ -26,7 +26,17 @@
         <div class="hidden float-right items-center md:flex md:float-none md:order-3">
             <ul class="inline-flex">
                 <li class="mx-3"><a href="/cart1"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a></li>
-                <li class="mx-3"><a href="/login"><i class="fa-sharp fa-solid fa-user"></i></a></li>
+                @auth
+                    {{-- <a href="/login">{{ Auth::user()->email }}</a> --}}
+                    
+                    <li class="mx-3"><a href="/login"><i class="fa-solid fa-user-gear"></i></i></a></li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <li class="mx-3"><a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();"><i class="fa-solid fa-right-from-bracket"></i></i></a></li>
+                    </form>
+                @else
+                    <li class="mx-3"><a href="/login"><i class="fa-sharp fa-solid fa-user"></i></a></li>
+                @endauth
             </ul>
         </div>
     </div>
