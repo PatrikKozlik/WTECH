@@ -8,9 +8,17 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\VoluntaryRegistrationController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
+    
+    Route::get('voluntary_register', [VoluntaryRegistrationController::class, 'create'])
+                ->name('voluntary_register');
+
+    Route::post('voluntary_register', [VoluntaryRegistrationController::class, 'store']);
+
+    
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 

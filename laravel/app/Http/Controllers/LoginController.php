@@ -16,7 +16,8 @@ class LoginController extends Controller
         $users = Address::select('p.id', 'p.value as psc', 'user_id', 's.value as street' )
                             ->join('postal_code as p', 'p.id', '=', 'address.postalcode_id')
                             ->join('street as s', 's.id', '=', 'p.id')
-                            ->get();
+                            ->where('table2.clmn', 5)
+                            ->update([ 'a.key' => DB::raw("`c`.`left_key`") ]);
 
         return view('login/login', ['users' => $users]);
     }

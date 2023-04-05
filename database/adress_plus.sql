@@ -20,27 +20,30 @@ DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE pet_shop.street_number(
     id INT NOT NULL AUTO_INCREMENT,
+    city_id INT NOT NULL,
     value VARCHAR (10),
     PRIMARY KEY (id),
-    CONSTRAINT `street_n_city` FOREIGN KEY (`id`) REFERENCES `city` (id)
+    CONSTRAINT `street_n_city` FOREIGN KEY (`city_id`) REFERENCES `city` (id)
 )
 ENGINE=InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE pet_shop.street(
     id INT NOT NULL AUTO_INCREMENT,
+    street_number_id INT NOT NULL,
     value VARCHAR (45),
     PRIMARY KEY (id),
-    CONSTRAINT `street_street_n` FOREIGN KEY (`id`) REFERENCES `street_number` (id)
+    CONSTRAINT `street_street_n` FOREIGN KEY (`street_number_id`) REFERENCES `street_number` (id)
 )
 ENGINE=InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE pet_shop.postal_code(
     id INT NOT NULL AUTO_INCREMENT,
+    street_id INT NOT NULL,
     value VARCHAR (25),
     PRIMARY KEY (id),
-    CONSTRAINT `postalcode_street` FOREIGN KEY (`id`) REFERENCES `street` (id)
+    CONSTRAINT `postalcode_street` FOREIGN KEY (`street_id`) REFERENCES `street` (id)
 )
 ENGINE=InnoDB
 DEFAULT CHARACTER SET = utf8;
