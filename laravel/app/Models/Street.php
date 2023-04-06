@@ -9,5 +9,13 @@ class Street extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'street_number_id',
+        'value',
+    ];
+
     protected $table = 'street';
+
+    const CREATED_AT = null;
+    const UPDATED_AT = null;
 }

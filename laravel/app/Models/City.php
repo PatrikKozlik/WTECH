@@ -9,5 +9,12 @@ class City extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'value',
+    ];
+
     protected $table = 'city';
+
+    const CREATED_AT = null;
+    const UPDATED_AT = null;
 }

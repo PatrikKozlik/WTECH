@@ -13,12 +13,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     
-    Route::get('voluntary_register', [VoluntaryRegistrationController::class, 'create'])
-                ->name('voluntary_register');
-
-    Route::post('voluntary_register', [VoluntaryRegistrationController::class, 'store']);
-
-    
     Route::get('register', [RegisteredUserController::class, 'create'])
                 ->name('register');
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VoluntaryRegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,6 @@ Route::get('contact',  [ContactController::class, 'contact_view'])->name('contac
 Route::get('cart1',  [CartController::class, 'cart1_view'])->name('cart1');
 Route::get('cart2',  [CartController::class, 'cart2_view'])->name('cart2');
 Route::get('cart3',  [CartController::class, 'cart3_view'])->name('cart3');
+
+Route::get('voluntary_register', [VoluntaryRegistrationController::class, 'create'])->name('voluntary_register');
+Route::post('voluntary_register', [VoluntaryRegistrationController::class, 'store']);
