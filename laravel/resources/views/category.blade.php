@@ -1,311 +1,276 @@
-<!DOCTYPE html>
-<html lang="sk">
+@extends('layouts.app')
+ 
+@section('content')
+<section class="mt-24 mb-24">
+	<h1 class="text-center text-3xl font-bold mb-8 lg:ml-17.5">Hračky</h1>
+	<div class="flex justify-center">
+		<div class="lg:hidden mt-6 w-10/12">
+			<button id="filter_button" class="mt-2 bg-green-500 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full float-right">Filtrovať</button>
+		</div>
+	</div>
+	<div class="flex justify-center">
+		<div class="grid lg:grid-cols-4 grid-cols-3 w-10/12">
+			<!-- FILTER -->
+			<form id="search_form" action="">
+				<div class="col-span-1 lg:block hidden">
+					<h2 class="text-xl font-bold mb-6">Filter</h2>
+					<p class="text-l mb-2">Cena</p>
+					<div class="grid grid-cols-2 m-2 mb-6 w-2/3">
+						<input from="search_form" type="number" name="low_price" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Od">
+						<input from="search_form" type="number" name="high_price" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Do">
+					</div>
+					
+					<!-- filter checkboxes -->
+					<p class="text-l mb-2">Výrobca</p>
+					<!-- one box-->
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_1")'>
+						<input from="search_form" type="checkbox" name="name" id="checkbox_1" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<label for="checkbox" class="ml-2 text-sm font-medium">Pedigree</label>
+					</div>
+					<!-- end of one box -->
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_2")'>
+						<input from="search_form" type="checkbox" name="name" id="checkbox_2" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<label for="checkbox" class="ml-2 text-sm font-medium">Darling</label>
+					</div>
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_3")'>
+						<input from="search_form" type="checkbox" name="name" id="checkbox_3" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<label for="checkbox" class="ml-2 text-sm font-medium">Slovakia farm</label>
+					</div>
 
-	<head>
-		<title>Pet Shop</title>
-		<meta content="width=device-width, initial-scale=1.0" name="viewport">
-		<meta name="description" content="Internetový obchod s potrebami pre zvieratá">
-		<meta name="keywords" content="eshop, pets, food, toys, accessorities, dog, cat">
-		<meta http-equiv='content-language' content='sk-sk'>
-		
-		<!-- CSS stylesheets -->
-		<link href="{{ asset('css/output.css') }}" rel="stylesheet">
-		<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
-	</head>
-		
-	<body>
-		
-		{{-- Header --}}
-		@include('layouts/header')
+					<p class="text-l mb-2">Dostpunosť</p>
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_4")'>
+						<input from="search_form" type="checkbox" name="name" id="checkbox_4" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<label for="checkbox" class="ml-2 text-sm font-medium">Na sklade</label>
+					</div>
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_5")'>
+						<input from="search_form" type="checkbox" name="name" id="checkbox_5" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<label for="checkbox" class="ml-2 text-sm font-medium">Na ceste</label>
+					</div>
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_6")'>
+						<input from="search_form" type="checkbox" name="name" id="checkbox_6" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<label for="checkbox" class="ml-2 text-sm font-medium">Nedostupne</label>
+					</div>
 
-		<section class="mt-24 pb-24">
-			<h1 class="text-center text-3xl font-bold mb-8 lg:ml-17.5">Hračky</h1>
-			<div class="flex justify-center">
-				<div class="lg:hidden mt-6 w-10/12">
-					<button id="filter_button" class="mt-2 bg-green-500 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full float-right">Filtrovať</button>
+					<p class="text-l mb-2">Zoradenie</p>
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_7")'>
+						<input from="search_form" type="checkbox" name="most_selled" id="checkbox_7" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<label for="checkbox" class="ml-2 text-sm font-medium">Najpredávanejšie</label>
+					</div>
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_8")'>
+						<input from="search_form" type="checkbox" name="expensive" id="checkbox_8" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<label for="checkbox" class="ml-2 text-sm font-medium">Najdrahšie</label>
+					</div>
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_9")'>
+						<input from="search_form" type="checkbox" name="cheap" id="checkbox_9" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<label for="checkbox" class="ml-2 text-sm font-medium">Najlacnejšie</label>
+					</div>
+
+					<button form="search_form" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full mt-5">Vyhľadať ></button>
 				</div>
+			</form>
+			
+			<!-- SHOP PRODUCTS-->
+			<div class="col-span-3 grid md:grid-cols-3 sm:grid-cols-1 place-items-center lg:place-items-start">
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>		
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>	
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>		
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>		
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>	
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>	
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>		
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>	
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>	
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>		
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>	
+				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+					<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
+					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
+					<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
+					<a href="">
+						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+					</a>
+				</div>	
+				
+				<div class="w-2/3 md:block hidden">
+					<i class="float-left fa-solid fa-arrow-left mt-8 fa-2x transition duration-500 hover:scale-110"></i>
+				</div>
+				<div class="w-2/3 content-center md:block hidden">
+					<p class="mt-8 text-center">1</p>
+				</div>
+				<div class="w-2/3 md:block hidden">
+					<i class="fa-solid fa-arrow-right float-right mt-8 fa-2x transition duration-500 hover:scale-110"></i>
+				</div>
+				
+				
 			</div>
-			<div class="flex justify-center">
-				<div class="grid lg:grid-cols-4 grid-cols-3 w-10/12">
-					<!-- FILTER -->
-					<form id="search_form" action="">
-						<div class="col-span-1 lg:block hidden">
-							<h2 class="text-xl font-bold mb-6">Filter</h2>
-							<p class="text-l mb-2">Cena</p>
+			
+			<div class="md:hidden grid grid-cols-3 w-full col-span-3 place-items-center">
+				<i class="float-left fa-solid fa-arrow-left mt-8 fa-2x transition duration-500 hover:scale-110 "></i>
+				<p class="mt-8 text-center">1</p>
+				<i class="fa-solid fa-arrow-right float-right mt-8 fa-2x transition duration-500 hover:scale-110"></i>
+			</div>
+
+			
+
+		</div>
+	</div>
+</section>
+
+	<!-- Modal content -->
+	<div id="filterModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="bg-stone-800/70 items-center justify-center fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full">
+		<div class="relative w-full h-full max-w-2xl lg:h-auto">
+			<div class="relative bg-gradient-to-t to-amber-700 from-amber-500 rounded-lg shadow border-2 border-amber-500">
+				<div class="flex items-start justify-between p-4 border-b-4 rounded-t border-white">
+					<h3 class="text-xl font-semibold text-white">
+						Filtrovať
+					</h3>
+					<button onclick="document.getElementById('filterModal').style.display='none'" class="text-white font-bold bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="staticModal">
+						<i class="fa fa-times text-2xl" aria-hidden="true"></i> 
+					</button>
+				</div>
+				<form id="search_form" action="">
+					<div class="p-6 space-y-6">
+						<p class="text-l mb-2">Cena</p>
 							<div class="grid grid-cols-2 m-2 mb-6 w-2/3">
 								<input from="search_form" type="number" name="low_price" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Od">
 								<input from="search_form" type="number" name="high_price" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Do">
 							</div>
-							
+
 							<!-- filter checkboxes -->
 							<p class="text-l mb-2">Výrobca</p>
 							<!-- one box-->
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_1")'>
-								<input from="search_form" type="checkbox" name="name" id="checkbox_1" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_1")'>
+								<input from="search_form" type="checkbox" name="name" id="m_checkbox_1" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Pedigree</label>
 							</div>
 							<!-- end of one box -->
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_2")'>
-								<input from="search_form" type="checkbox" name="name" id="checkbox_2" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_2")'>
+								<input from="search_form" type="checkbox" name="name" id="m_checkbox_2" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Darling</label>
 							</div>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_3")'>
-								<input from="search_form" type="checkbox" name="name" id="checkbox_3" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_3")'>
+								<input from="search_form" type="checkbox" name="name" id="m_checkbox_3" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Slovakia farm</label>
 							</div>
 
 
 							<p class="text-l mb-2">Dostpunosť</p>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_4")'>
-								<input from="search_form" type="checkbox" name="name" id="checkbox_4" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_4")'>
+								<input from="search_form" type="checkbox" name="name" id="m_checkbox_4" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Na sklade</label>
 							</div>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_5")'>
-								<input from="search_form" type="checkbox" name="name" id="checkbox_5" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_5")'>
+								<input from="search_form" type="checkbox" name="name" id="m_checkbox_5" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Na ceste</label>
 							</div>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_6")'>
-								<input from="search_form" type="checkbox" name="name" id="checkbox_6" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_6")'>
+								<input from="search_form" type="checkbox" name="name" id="m_checkbox_6" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Nedostupne</label>
 							</div>
 
 							<p class="text-l mb-2">Zoradenie</p>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_7")'>
-								<input from="search_form" type="checkbox" name="most_selled" id="checkbox_7" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_7")'>
+								<input from="search_form" type="checkbox" name="most_selled" id="m_checkbox_7" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Najpredávanejšie</label>
 							</div>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_8")'>
-								<input from="search_form" type="checkbox" name="expensive" id="checkbox_8" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_8")'>
+								<input from="search_form" type="checkbox" name="expensive" id="m_checkbox_8" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Najdrahšie</label>
 							</div>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_9")'>
-								<input from="search_form" type="checkbox" name="cheap" id="checkbox_9" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_9")'>
+								<input from="search_form" type="checkbox" name="cheap" id="m_checkbox_9" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Najlacnejšie</label>
 							</div>
-
-							<button form="search_form" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full mt-5">Vyhľadať ></button>
-						</div>
-					</form>
-					
-					<!-- SHOP PRODUCTS-->
-					<div class="col-span-3 grid md:grid-cols-3 sm:grid-cols-1 place-items-center lg:place-items-start">
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>		
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>	
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>		
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>		
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>	
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>	
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>		
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>	
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>	
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>		
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>	
-						<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-							<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-							<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
-							<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
-							<a href="">
-								<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-							</a>
-						</div>	
-						
-						<div class="w-2/3 md:block hidden">
-							<i class="float-left fa-solid fa-arrow-left mt-8 fa-2x transition duration-500 hover:scale-110"></i>
-						</div>
-						<div class="w-2/3 content-center md:block hidden">
-							<p class="mt-8 text-center">1</p>
-						</div>
-						<div class="w-2/3 md:block hidden">
-							<i class="fa-solid fa-arrow-right float-right mt-8 fa-2x transition duration-500 hover:scale-110"></i>
-						</div>
-						
-						
 					</div>
-					
-					<div class="md:hidden grid grid-cols-3 w-full col-span-3 place-items-center">
-						<i class="float-left fa-solid fa-arrow-left mt-8 fa-2x transition duration-500 hover:scale-110 "></i>
-						<p class="mt-8 text-center">1</p>
-						<i class="fa-solid fa-arrow-right float-right mt-8 fa-2x transition duration-500 hover:scale-110"></i>
+					<div class="flex items-center p-6 space-x-2 border-t-4 border-gray-200 rounded-b ">
+						<button form="edit_pruduct_form" class="bg-green-500 hover:bg-green-300 hover:text-green-500 text-white font-bold py-2 px-4 rounded-full">Vyhľadať</button>
 					</div>
-
-					
-
-				</div>
-			</div>
-		</section>
-		
-		{{-- Footer --}}
-		@include('layouts/footer')
-
-		<!-- Modal content -->
-		<div id="filterModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="bg-stone-800/70 items-center justify-center fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-full">
-			<div class="relative w-full h-full max-w-2xl lg:h-auto">
-				<div class="relative bg-gradient-to-t to-amber-700 from-amber-500 rounded-lg shadow border-2 border-amber-500">
-					<div class="flex items-start justify-between p-4 border-b-4 rounded-t border-white">
-						<h3 class="text-xl font-semibold text-white">
-							Filtrovať
-						</h3>
-						<button onclick="document.getElementById('filterModal').style.display='none'" class="text-white font-bold bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="staticModal">
-							<i class="fa fa-times text-2xl" aria-hidden="true"></i> 
-						</button>
-					</div>
-					<form id="search_form" action="">
-						<div class="p-6 space-y-6">
-							<p class="text-l mb-2">Cena</p>
-								<div class="grid grid-cols-2 m-2 mb-6 w-2/3">
-									<input from="search_form" type="number" name="low_price" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Od">
-									<input from="search_form" type="number" name="high_price" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Do">
-								</div>
-
-								<!-- filter checkboxes -->
-								<p class="text-l mb-2">Výrobca</p>
-								<!-- one box-->
-								<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_1")'>
-									<input from="search_form" type="checkbox" name="name" id="m_checkbox_1" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-									<label for="checkbox" class="ml-2 text-sm font-medium">Pedigree</label>
-								</div>
-								<!-- end of one box -->
-								<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_2")'>
-									<input from="search_form" type="checkbox" name="name" id="m_checkbox_2" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-									<label for="checkbox" class="ml-2 text-sm font-medium">Darling</label>
-								</div>
-								<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_3")'>
-									<input from="search_form" type="checkbox" name="name" id="m_checkbox_3" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-									<label for="checkbox" class="ml-2 text-sm font-medium">Slovakia farm</label>
-								</div>
-
-
-								<p class="text-l mb-2">Dostpunosť</p>
-								<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_4")'>
-									<input from="search_form" type="checkbox" name="name" id="m_checkbox_4" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-									<label for="checkbox" class="ml-2 text-sm font-medium">Na sklade</label>
-								</div>
-								<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_5")'>
-									<input from="search_form" type="checkbox" name="name" id="m_checkbox_5" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-									<label for="checkbox" class="ml-2 text-sm font-medium">Na ceste</label>
-								</div>
-								<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_6")'>
-									<input from="search_form" type="checkbox" name="name" id="m_checkbox_6" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-									<label for="checkbox" class="ml-2 text-sm font-medium">Nedostupne</label>
-								</div>
-
-								<p class="text-l mb-2">Zoradenie</p>
-								<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_7")'>
-									<input from="search_form" type="checkbox" name="most_selled" id="m_checkbox_7" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-									<label for="checkbox" class="ml-2 text-sm font-medium">Najpredávanejšie</label>
-								</div>
-								<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_8")'>
-									<input from="search_form" type="checkbox" name="expensive" id="m_checkbox_8" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-									<label for="checkbox" class="ml-2 text-sm font-medium">Najdrahšie</label>
-								</div>
-								<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_9")'>
-									<input from="search_form" type="checkbox" name="cheap" id="m_checkbox_9" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-									<label for="checkbox" class="ml-2 text-sm font-medium">Najlacnejšie</label>
-								</div>
-						</div>
-						<div class="flex items-center p-6 space-x-2 border-t-4 border-gray-200 rounded-b ">
-							<button form="edit_pruduct_form" class="bg-green-500 hover:bg-green-300 hover:text-green-500 text-white font-bold py-2 px-4 rounded-full">Vyhľadať</button>
-						</div>
-					</form>
-				</div>
+				</form>
 			</div>
 		</div>
+	</div>
 
+@endsection
 
-	</body>
-
-	<!-- JS Scripts -->
-	<!-- Fafa icons -->
-	<script src="https://kit.fontawesome.com/1d5e2079b1.js" crossorigin="anonymous"></script>
-
-	<!-- Mobile, button -->
-	<script>
-		const btn = document.querySelector("button.mobile-menu-button");
-		const menu = document.querySelector(".mobile-menu");
-		
-		btn.addEventListener("click", () => {
-		menu.classList.toggle("hidden");
-		});
-	</script>
-
+@section('additional_scripts')
 	<script>
 		const filter = document.querySelector("#filter_button");
 		const modal = document.querySelector("#filterModal");
@@ -339,5 +304,4 @@
 			else el.checked = true;
 		}
 	</script>
-
-</html>
+@endsection
