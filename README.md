@@ -51,3 +51,11 @@ Install: <code>npm install @tailwindcss/line-clamp</code>
 Use: <code>plugins: [
     require('@tailwindcss/line-clamp'),
   ],</code>
+
+---
+# Database migration commands
+1. Create local database with name pet_shop, then user these commands
+<br>
+<code>php artisan migrate</code>
+<br>
+<code>php artisan db:seed --class=InitialSeeder</code>

@@ -23,6 +23,16 @@ class VoluntaryRegistrationController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->validate([
+            'phone_number' => ['required', 'string', 'max:20'],
+            'name' => ['required', 'string', 'max:25'],
+            'surname' => ['required', 'string', 'max:25'],
+            'street' => ['required', 'string', 'max:56'],
+            'postcode' => ['required', 'string', 'max:25'],
+            'city' => ['required', 'string', 'max:25'],
+        ]);
+
         $user = User::where('email', Auth::user()->email)->first();
         $user->phone = $request->phone_number;
         $user->first_name = $request->name;

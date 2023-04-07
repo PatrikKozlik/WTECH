@@ -19,7 +19,7 @@
 					<input id="surname" type="text" name="surname" class="my-2 w-full h-10 rounded-md p-2 text-lg" required autofocus />
 					
 					<!-- Street -->
-					<label for="street" class="text-white float-left">Ulica:</label>
+					<label for="street" class="text-white float-left">Ulica a číslo:</label>
 					<input id="street" type="text" name="street" class="my-2 w-full h-10 rounded-md p-2 text-lg" required autofocus />
 					
 					<!-- City -->
