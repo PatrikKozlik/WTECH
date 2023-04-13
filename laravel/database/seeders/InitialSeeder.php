@@ -48,5 +48,53 @@ class InitialSeeder extends Seeder
             ]
         ]);
 
+        // Insert data into the category table
+        DB::table('category')->insert([
+            [
+                'value' => 'Hračky',
+                'state_id' => '1',
+            ],
+            [
+                'value' => 'Príslušenstvo',
+                'state_id' => '1',
+            ],
+            [
+                'value' => 'Krmivo',
+                'state_id' => '1',
+            ],
+        ]);
+
+        // Insert data into the supplier table
+        DB::table('supplier')->insert([
+            [
+                'value' => 'Pedigree',
+                'state_id' => '1',
+            ],
+            [
+                'value' => 'Darling',
+                'state_id' => '1',
+            ],
+            [
+                'value' => 'Slovakia farm',
+                'state_id' => '1',
+            ],
+            [
+                'value' => 'Papo',
+                'state_id' => '1',
+            ],
+            [
+                'value' => 'Mojo',
+                'state_id' => '1',
+            ],
+            [
+                'value' => 'Whiskas',
+                'state_id' => '1',
+            ],
+            [
+                'value' => "Hill's",
+                'state_id' => '1',
+            ],
+        ]);
+
     }
 }

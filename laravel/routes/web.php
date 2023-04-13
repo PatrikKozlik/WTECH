@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
@@ -33,7 +34,8 @@ Route::get('/',  [IndexController::class, 'index_view']);
 
 Route::get('/home',  [AdminController::class, 'admin_view'])->name('home');
 
-Route::get('category',  [CategoryController::class, 'category_view'])->name('category');
+Route::get('category/{type}',  [CategoryController::class, 'category_view'])->name('category');
+Route::get('/product/{value}',  [ProductController::class, 'product_view'])->name('product');
 
 Route::get('contact',  [ContactController::class, 'contact_view'])->name('contact');
 

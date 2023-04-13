@@ -1,8 +1,9 @@
 @extends('layouts.app')
  
 @section('content')
+@php($i=4)
 <section class="mt-24 mb-24">
-	<h1 class="text-center text-3xl font-bold mb-8 lg:ml-17.5">Hračky</h1>
+	<h1 class="text-center text-3xl font-bold mb-8 lg:ml-17.5">{{$type}}</h1>
 	<div class="flex justify-center">
 		<div class="lg:hidden mt-6 w-10/12">
 			<button id="filter_button" class="mt-2 bg-green-500 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full float-right">Filtrovať</button>
@@ -23,152 +24,63 @@
 					<!-- filter checkboxes -->
 					<p class="text-l mb-2">Výrobca</p>
 					<!-- one box-->
-					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_1")'>
-						<input from="search_form" type="checkbox" name="name" id="checkbox_1" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-						<label for="checkbox" class="ml-2 text-sm font-medium">Pedigree</label>
-					</div>
-					<!-- end of one box -->
-					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_2")'>
-						<input from="search_form" type="checkbox" name="name" id="checkbox_2" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-						<label for="checkbox" class="ml-2 text-sm font-medium">Darling</label>
-					</div>
-					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_3")'>
-						<input from="search_form" type="checkbox" name="name" id="checkbox_3" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-						<label for="checkbox" class="ml-2 text-sm font-medium">Slovakia farm</label>
-					</div>
+					@foreach ($categories as $item)
+						<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
+							<input from="search_form" type="checkbox" name="supplier[]" id="checkbox_{{$i}}" type="checkbox" value="{{$item}}" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<label for="checkbox" class="ml-2 text-sm font-medium">{{$item}}</label>
+						</div>
+						@php($i++)
+					@endforeach
 
 
 					<p class="text-l mb-2">Dostpunosť</p>
-					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_4")'>
-						<input from="search_form" type="checkbox" name="name" id="checkbox_4" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
+						<input from="search_form" type="checkbox" name="available[]" id="checkbox_{{$i}}" type="checkbox" value="1" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="checkbox" class="ml-2 text-sm font-medium">Na sklade</label>
 					</div>
-					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_5")'>
-						<input from="search_form" type="checkbox" name="name" id="checkbox_5" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-						<label for="checkbox" class="ml-2 text-sm font-medium">Na ceste</label>
-					</div>
-					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_6")'>
-						<input from="search_form" type="checkbox" name="name" id="checkbox_6" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+					@php($i++)
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
+						<input from="search_form" type="checkbox" name="available[]" id="checkbox_{{$i}}" type="checkbox" value="0" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="checkbox" class="ml-2 text-sm font-medium">Nedostupne</label>
 					</div>
+					@php($i++)
 
 					<p class="text-l mb-2">Zoradenie</p>
-					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_7")'>
-						<input from="search_form" type="checkbox" name="most_selled" id="checkbox_7" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
+						<input from="search_form" type="checkbox" name="order" id="checkbox_{{$i}}" type="checkbox" value="most_selled" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="checkbox" class="ml-2 text-sm font-medium">Najpredávanejšie</label>
 					</div>
-					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_8")'>
-						<input from="search_form" type="checkbox" name="expensive" id="checkbox_8" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+					@php($i++)
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
+						<input from="search_form" type="checkbox" name="order" id="checkbox_{{$i}}" type="checkbox" value="expensive" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="checkbox" class="ml-2 text-sm font-medium">Najdrahšie</label>
 					</div>
-					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_9")'>
-						<input from="search_form" type="checkbox" name="cheap" id="checkbox_9" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+					@php($i++)
+					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
+						<input from="search_form" type="checkbox" name="order" id="checkbox_{{$i}}" type="checkbox" value="cheap" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="checkbox" class="ml-2 text-sm font-medium">Najlacnejšie</label>
 					</div>
 
-					<button form="search_form" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full mt-5">Vyhľadať ></button>
+					<button form="search_form" type="submit" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full mt-5">Vyhľadať ></button>
 				</div>
 			</form>
 			
 			<!-- SHOP PRODUCTS-->
 			<div class="col-span-3 grid md:grid-cols-3 sm:grid-cols-1 place-items-center lg:place-items-start">
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>		
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>	
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>		
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>		
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>	
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>	
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>		
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>	
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>	
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>		
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>	
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-3/5">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>	
+				@foreach ($products as $product)
+					<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
+						<img src="{{ asset('images/'.$product->id.'.jpg') }}" alt="{{$product->product_name}}" class="p-4 w-full object-cover h-3/5">
+						<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">{{$product->product_name}} </h2>
+						<p class="text-2xl pt-2 pl-4 font-bold text-white">{{$product->price}}€</p>
+						<a href="{{ route('product', ['value' => $product->id]) }}">
+							<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+						</a>
+					</div>		
+				@endforeach
 				
+			</div>
+			<div></div>
+			<div class="col-span-3 grid md:grid-cols-3 sm:grid-cols-1 place-items-center lg:place-items-start">
 				<div class="w-2/3 md:block hidden">
 					<i class="float-left fa-solid fa-arrow-left mt-8 fa-2x transition duration-500 hover:scale-110"></i>
 				</div>
@@ -178,8 +90,6 @@
 				<div class="w-2/3 md:block hidden">
 					<i class="fa-solid fa-arrow-right float-right mt-8 fa-2x transition duration-500 hover:scale-110"></i>
 				</div>
-				
-				
 			</div>
 			
 			<div class="md:hidden grid grid-cols-3 w-full col-span-3 place-items-center">
@@ -286,6 +196,7 @@
 	<!-- check/uncheck checkbox-->
 	<script>
 		var textinputs = document.querySelectorAll('input[type=checkbox]'); 
+		var orderinputs = document.querySelectorAll('input[name=order]'); 
 		for(var i = 0; i < textinputs.length; i++){
 			textinputs[i].onclick = function() { 
 				if(this.checked == true){
@@ -298,6 +209,14 @@
 		}
 		function check_checkbox(element_id){
 			var el = document.getElementById(element_id);
+			for(let j = 0; j < orderinputs.length; j++){
+				if(orderinputs[j] == el && el.checked == false){
+					for (let index = 0; index < orderinputs.length; index++) {
+						orderinputs[index].checked = false;					
+					}
+					break;
+				}
+			}
 			if(el.checked == true){
 				el.checked = false;
 			}

@@ -146,6 +146,7 @@ class CreateInitDatabase extends Migration
             $table->float('price', 8, 2);
             $table->integer('number_of_products');
             $table->boolean('available');
+            $table->text('details');
             
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('supplier_id');

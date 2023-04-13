@@ -16,9 +16,9 @@
         
         <div class="hidden order-3 items-center md:flex md:order-2" id="navbar-solid-bg">
             <ul class="inline-flex">
-                <li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="/category">Krmivo</a></li>
-                <li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="/category">Hračky</a></li>
-                <li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="/category">Príslušenstvo</a></li>
+                <li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="/category/Krmivo">Krmivo</a></li>
+                <li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="/category/Hračky">Hračky</a></li>
+                <li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="/category/Príslušenstvo">Príslušenstvo</a></li>
                 <li class="lg:mx-8 md:mx-3 sm:mx-2"><a href="/contact">Kontakt</a></li>
             </ul>
         </div>
@@ -43,9 +43,9 @@
 
     <div class="mobile-menu hidden order-3 items-center md:hidden md:order-2 mt-5" id="navbar-solid-bg">
         <ul class="">
-            <a href="/category"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Krmivo</li></a>
-            <a href="/category"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Hračky</li></a>
-            <a href="/category"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Príslušenstvo</li></a>
+            <a href="/category/Krmivo"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Krmivo</li></a>
+            <a href="/category/Hračky"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Hračky</li></a>
+            <a href="/category/Príslušenstvo"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Príslušenstvo</li></a>
             <a href="/contact"><li class="m-2 p-2 lg:mx-8 md:mx-3 sm:mx-2 text-center bg-amber-900 rounded-md">Kontakt</li></a>
         </ul>
     </div>
