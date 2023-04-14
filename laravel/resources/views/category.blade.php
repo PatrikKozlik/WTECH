@@ -12,13 +12,13 @@
 	<div class="flex justify-center">
 		<div class="grid lg:grid-cols-4 grid-cols-3 w-10/12">
 			<!-- FILTER -->
-			<form id="search_form" action="">
+			<form id="search_form" action="{!! route('category', ['type' => $type, 'filter' => true]) !!}" method="GET">
 				<div class="col-span-1 lg:block hidden">
 					<h2 class="text-xl font-bold mb-6">Filter</h2>
 					<p class="text-l mb-2">Cena</p>
 					<div class="grid grid-cols-2 m-2 mb-6 w-2/3">
-						<input from="search_form" type="number" name="low_price" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Od">
-						<input from="search_form" type="number" name="high_price" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Do">
+						<input from="search_form" type="number" name="low_price" value="{{$request != null ? $request->low_price : ''}}" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Od">
+						<input from="search_form" type="number" name="high_price" value="{{$request != null ? $request->high_price : ''}}" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Do">
 					</div>
 					
 					<!-- filter checkboxes -->
@@ -26,7 +26,7 @@
 					<!-- one box-->
 					@foreach ($categories as $item)
 						<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
-							<input from="search_form" type="checkbox" name="supplier[]" id="checkbox_{{$i}}" type="checkbox" value="{{$item}}" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<input from="search_form" type="checkbox" name="supplier[]" id="checkbox_{{$i}}" type="checkbox" value="{{$item}}" {{ !empty($request->supplier) && in_array($item, $request->supplier) ? 'checked' : '' }} class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 							<label for="checkbox" class="ml-2 text-sm font-medium">{{$item}}</label>
 						</div>
 						@php($i++)
@@ -35,29 +35,24 @@
 
 					<p class="text-l mb-2">Dostpunosť</p>
 					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
-						<input from="search_form" type="checkbox" name="available[]" id="checkbox_{{$i}}" type="checkbox" value="1" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<input from="search_form" type="checkbox" name="available[]" id="checkbox_{{$i}}" type="checkbox" value="1" {{ !empty($request->available) && in_array("1", $request->available) ? 'checked' : '' }} class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="checkbox" class="ml-2 text-sm font-medium">Na sklade</label>
 					</div>
 					@php($i++)
 					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
-						<input from="search_form" type="checkbox" name="available[]" id="checkbox_{{$i}}" type="checkbox" value="0" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<input from="search_form" type="checkbox" name="available[]" id="checkbox_{{$i}}" type="checkbox" value="0" {{ !empty($request->available) && in_array("0", $request->available) ? 'checked' : '' }} class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="checkbox" class="ml-2 text-sm font-medium">Nedostupne</label>
 					</div>
 					@php($i++)
 
 					<p class="text-l mb-2">Zoradenie</p>
 					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
-						<input from="search_form" type="checkbox" name="order" id="checkbox_{{$i}}" type="checkbox" value="most_selled" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-						<label for="checkbox" class="ml-2 text-sm font-medium">Najpredávanejšie</label>
-					</div>
-					@php($i++)
-					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
-						<input from="search_form" type="checkbox" name="order" id="checkbox_{{$i}}" type="checkbox" value="expensive" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<input from="search_form" type="checkbox" name="order" id="checkbox_{{$i}}" type="checkbox" value="expensive" {{$request !=null && $request->order == "expensive" ? "checked" : ''}} class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="checkbox" class="ml-2 text-sm font-medium">Najdrahšie</label>
 					</div>
 					@php($i++)
 					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
-						<input from="search_form" type="checkbox" name="order" id="checkbox_{{$i}}" type="checkbox" value="cheap" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<input from="search_form" type="checkbox" name="order" id="checkbox_{{$i}}" type="checkbox" value="cheap" {{$request !=null && $request->order == "cheap" ? "checked" : ''}} class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="checkbox" class="ml-2 text-sm font-medium">Najlacnejšie</label>
 					</div>
 

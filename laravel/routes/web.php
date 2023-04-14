@@ -35,10 +35,12 @@ Route::get('/',  [IndexController::class, 'index_view']);
 Route::get('/home',  [AdminController::class, 'admin_view'])->name('home');
 
 Route::get('category/{type}',  [CategoryController::class, 'category_view'])->name('category');
+Route::get('category/{type}/filter',  [CategoryController::class, 'category_filter'])->name('category');
 Route::get('/product/{value}',  [ProductController::class, 'product_view'])->name('product');
 
 Route::get('contact',  [ContactController::class, 'contact_view'])->name('contact');
 
+Route::get('addToCart',  [CartController::class, 'cart_add'])->name('addToCart');
 Route::get('cart1',  [CartController::class, 'cart1_view'])->name('cart1');
 Route::get('cart2',  [CartController::class, 'cart2_view'])->name('cart2');
 Route::get('cart3',  [CartController::class, 'cart3_view'])->name('cart3');

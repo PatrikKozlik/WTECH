@@ -15,10 +15,16 @@
 					@endif
 				</p>
 				<p class="text-white w-11/12 pl-4 mt-4 md:line-clamp-5 hidden">{{$product->details}}</p>
-				<input from="search_form" type="number" name="high_price" class="w-16 bg-neutral-200 placeholder-gray-500 rounded-md px-2 left-6 bottom-20 absolute" type="text" value="1">
-				<a href="">
-					<button class="bg-green-500 hover:bg-green-300 hover:text-green-500 text-white font-bold py-2 px-4 rounded-full ml-4 mt-6 bottom-4 absolute">Kúpiť ></button>
-				</a>
+				<p class="text-white w-11/12 pl-4 mt-4 font-semibold">Na sklade: 
+					@if ($product->number_of_products > 5) >5 ks
+					@else {{$product->number_of_products}} ks
+					@endif
+				</p>
+				<form action="{{route('addToCart')}}" method="GET">
+					<input type="hidden" name="id" value="{{$product->id}}">
+					<input type="number" name="amount" class="w-16 bg-neutral-200 placeholder-gray-500 rounded-md px-2 left-6 bottom-20 absolute" value="1">
+					<button type="submit" class="bg-green-500 hover:bg-green-300 hover:text-green-500 text-white font-bold py-2 px-4 rounded-full ml-4 mt-6 bottom-4 absolute">Kúpiť ></button>
+				</form>
 
 			</div>
 		</div>		
