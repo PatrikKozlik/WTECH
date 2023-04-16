@@ -34,8 +34,8 @@ Route::get('/',  [IndexController::class, 'index_view']);
 
 Route::get('/home',  [AdminController::class, 'admin_view'])->name('home');
 
-Route::get('category/{type}',  [CategoryController::class, 'category_view'])->name('category');
-Route::get('category/{type}/filter',  [CategoryController::class, 'category_filter'])->name('category');
+Route::get('category/{type}',  [CategoryController::class, 'category_filter'])->name('category');
+
 Route::get('/product/{value}',  [ProductController::class, 'product_view'])->name('product');
 
 Route::get('contact',  [ContactController::class, 'contact_view'])->name('contact');

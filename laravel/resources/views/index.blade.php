@@ -2,14 +2,14 @@
  
 @section('content')
 <section class="mt-24 mb-24">
-	<form action="">
+	<form id="word_search_form" action="{{route('category', ['type' => 'Vyhľadanie'])}}" method="GET">
 		<div class="flex justify-center lg:mt-14 sm:mt-6">
-			<svg class="w-8 mr-4 float-left" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-				<path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
-			</svg>
-			<form id="word_search_form"action="">
-				<input form="word_search_form"id="search" type="text" name="search" class="my-2 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 w-6/12 h-10 rounded-md p-2 text-lg" placeholder="">
-			</form>
+			<button form="word_search_form" type="submit">
+				<svg class="w-8 mr-4 float-left" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+					<path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
+				</svg>
+			</button>
+			<input form="word_search_form"id="search" type="text" name="search" class="my-2 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 w-6/12 h-10 rounded-md p-2 text-lg" placeholder="" required>
 		</div>
 	</form>
 	<div class="flex justify-center mb-6">
@@ -20,32 +20,16 @@
 	<div class="flex justify-center mb-10">
 		<div class="w-10/12">
 			<div class="grid lg:grid-cols-3 place-items-center md:place-items-start md:grid-cols-2 sm:grid-cols-1">
-				<!-- ONE PRODUCT -->
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-96 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/dog_food.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-2/3">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Dog Fantasy miska ťažká 13,7 cm 0,55 l nerez </h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">2,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>		
-				<!-- END OF ONE PRODUCT -->
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-96 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/monkey.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-2/3">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Plyšová opica</h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">10,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>	
-				<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-96 transition duration-500 hover:scale-110">
-					<img src="{{ asset('images/bird_cage.jpg') }}" alt="dog_food" class="p-4 w-full object-cover h-2/3">
-					<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">Klietka</h2>
-					<p class="text-2xl pt-2 pl-4 font-bold text-white">5,99€</p>
-					<a href="">
-						<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
-					</a>
-				</div>		
+				@foreach ($recomend as $item)
+					<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-96 transition duration-500 hover:scale-110">
+						<img src="{{ asset('images/'.$item->id.'.jpg') }}" alt="{{$item->product_name}}" class="p-4 w-full object-cover h-2/3">
+						<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">{{$item->product_name}}</h2>
+						<p class="text-2xl pt-2 pl-4 font-bold text-white">{{$item->price}}€</p>
+						<a href="{{ route('product', ['value' => $item->id]) }}">
+							<button class="mt-2 ml-3 bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Kúpiť ></button>
+						</a>
+					</div>		
+				@endforeach
 			</div>
 
 		</div>

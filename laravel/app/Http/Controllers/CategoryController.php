@@ -10,28 +10,32 @@ use App\Models\Supplier;
 class CategoryController extends Controller
 {
 
-    public function category_view($type){
-        $products = Products::join('category', 'category.id', '=', 'products.category_id')
-                            ->join('supplier', 'supplier.id', '=', 'products.supplier_id')
-                            ->where('category.value', '=', $type)
-                            ->select('products.*', 'supplier.value')
-                            ->get();
-        $categories = $products->pluck('supplier.value')->unique()->toArray();
-        return view('category', ['type' => $type, 'products' => $products, 'categories' => $categories, 'request' => null]);
-    }
-
     public function category_filter($type, Request $request){
-        $categories = Products::join('category', 'category.id', '=', 'products.category_id')
-                            ->join('supplier', 'supplier.id', '=', 'products.supplier_id')
-                            ->where('category.value', '=', $type)
-                            ->pluck('supplier.value')
-                            ->unique()
-                            ->toArray();
-        
-        $products = Products::query()
-                            ->join('category', 'category.id', '=', 'products.category_id')
-                            ->join('supplier', 'supplier.id', '=', 'products.supplier_id')
-                            ->where('category.value', '=', $type);
+        $page = 1;
+        $products = Products::query();
+        $categories = null;
+        $request->validate([
+            'low_price' => 'nullable|numeric|min:0',
+            'high_price' => 'nullable|numeric|min:0',
+            'page' => 'nullable|numeric|min:0',
+        ]);
+        if($request->filled('search')){
+            $searchTerm = $request->input('search');
+            $products->whereRaw('MATCH(product_name) AGAINST(?)', [$searchTerm]);
+            $products->join('supplier', 'supplier.id', '=', 'products.supplier_id');
+            $categories = $products->pluck('supplier.value')->unique()->toArray();
+        }
+        else{
+            $products->join('category', 'category.id', '=', 'products.category_id')
+                   ->join('supplier', 'supplier.id', '=', 'products.supplier_id')
+                   ->where('category.value', '=', $type);
+            $categories = Products::join('category', 'category.id', '=', 'products.category_id')
+                   ->join('supplier', 'supplier.id', '=', 'products.supplier_id')
+                   ->where('category.value', '=', $type)
+                   ->pluck('supplier.value')
+                   ->unique()
+                   ->toArray();
+        }
         
         if($request->filled('low_price')){
             $products->where('price', '>=', $request->low_price);
@@ -53,9 +57,20 @@ class CategoryController extends Controller
         if($request->order == 'cheap'){
             $products->orderBy('price', 'asc');
         }
+        if($request->page != null){
+            $page = $request->page;
+        }
 
-        $products = $products->select('products.*')->get();
-        return view('category', ['type' => $type, 'products' => $products, 'categories' => $categories, 'request' => $request]);
+        $count = $products->count();
+        $move = [0,0, $page];
+        if($count > $page * 9){
+            $move[1] = 1;
+        }
+        if($page > 1){
+            $move[0] = 1;
+        } 
+        $products = $products->offset(($page-1)*9)->limit(9)->select('products.*')->get();
+        return view('category', ['type' => $type, 'products' => $products, 'categories' => $categories, 'request' => $request, 'move' => $move]);
     }
 
 }

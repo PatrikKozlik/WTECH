@@ -180,7 +180,7 @@ class CreateInitDatabase extends Migration
                 ->on('products')
                 ->onDelete('cascade');
         });
-
+        DB::statement('ALTER TABLE products ADD FULLTEXT INDEX product_name_fulltext (product_name)');
     }
 
     /**

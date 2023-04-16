@@ -12,7 +12,8 @@
 	<div class="flex justify-center">
 		<div class="grid lg:grid-cols-4 grid-cols-3 w-10/12">
 			<!-- FILTER -->
-			<form id="search_form" action="{!! route('category', ['type' => $type, 'filter' => true]) !!}" method="GET">
+			<form id="search_form" action="{!! route('category', ['type' => $type]) !!}" method="GET">
+				<x-auth-validation-errors class="mb-4 mt-4 text-center" :errors="$errors" />
 				<div class="col-span-1 lg:block hidden">
 					<h2 class="text-xl font-bold mb-6">Filter</h2>
 					<p class="text-l mb-2">Cena</p>
@@ -55,7 +56,9 @@
 						<input from="search_form" type="checkbox" name="order" id="checkbox_{{$i}}" type="checkbox" value="cheap" {{$request !=null && $request->order == "cheap" ? "checked" : ''}} class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="checkbox" class="ml-2 text-sm font-medium">Najlacnejšie</label>
 					</div>
-
+					@if($request->search != null)
+						<input type="hidden" name="search" value="{{$request->search}}">
+					@endif
 					<button form="search_form" type="submit" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full mt-5">Vyhľadať ></button>
 				</div>
 			</form>
@@ -76,15 +79,21 @@
 			</div>
 			<div></div>
 			<div class="col-span-3 grid md:grid-cols-3 sm:grid-cols-1 place-items-center lg:place-items-start">
-				<div class="w-2/3 md:block hidden">
-					<i class="float-left fa-solid fa-arrow-left mt-8 fa-2x transition duration-500 hover:scale-110"></i>
-				</div>
+				@if($move[0] == 1)
+					<button form="search_form" type="submit" name="page" value="{{$move[2]-1}}" class="w-2/3 md:block hidden">
+						<i class="float-left fa-solid fa-arrow-left mt-8 fa-2x transition duration-500 hover:scale-110"></i>
+					</button>
+				@else
+					<div></div>
+				@endif
 				<div class="w-2/3 content-center md:block hidden">
-					<p class="mt-8 text-center">1</p>
+					<p class="mt-8 text-center">{{$move[2]}}</p>
 				</div>
-				<div class="w-2/3 md:block hidden">
-					<i class="fa-solid fa-arrow-right float-right mt-8 fa-2x transition duration-500 hover:scale-110"></i>
-				</div>
+				@if($move[1] == 1)
+					<button form="search_form" type="submit" name="page" value="{{$move[2]+1}}" class="w-2/3 md:block hidden">
+						<i class="fa-solid fa-arrow-right float-right mt-8 fa-2x transition duration-500 hover:scale-110"></i>
+					</button>
+				@endif
 			</div>
 			
 			<div class="md:hidden grid grid-cols-3 w-full col-span-3 place-items-center">
@@ -111,62 +120,54 @@
 						<i class="fa fa-times text-2xl" aria-hidden="true"></i> 
 					</button>
 				</div>
-				<form id="search_form" action="">
+				<form id="search_form_mobile" action="{!! route('category', ['type' => $type]) !!}" method="GET">
+					@php($i++)
 					<div class="p-6 space-y-6">
 						<p class="text-l mb-2">Cena</p>
 							<div class="grid grid-cols-2 m-2 mb-6 w-2/3">
-								<input from="search_form" type="number" name="low_price" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Od">
-								<input from="search_form" type="number" name="high_price" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Do">
+								<input from="search_form_mobile" type="number" name="low_price" value="{{$request != null ? $request->low_price : ''}}" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Od">
+								<input from="search_form_mobile" type="number" name="high_price" value="{{$request != null ? $request->high_price : ''}}" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Do">
 							</div>
 
 							<!-- filter checkboxes -->
 							<p class="text-l mb-2">Výrobca</p>
-							<!-- one box-->
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_1")'>
-								<input from="search_form" type="checkbox" name="name" id="m_checkbox_1" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-								<label for="checkbox" class="ml-2 text-sm font-medium">Pedigree</label>
-							</div>
-							<!-- end of one box -->
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_2")'>
-								<input from="search_form" type="checkbox" name="name" id="m_checkbox_2" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-								<label for="checkbox" class="ml-2 text-sm font-medium">Darling</label>
-							</div>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_3")'>
-								<input from="search_form" type="checkbox" name="name" id="m_checkbox_3" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-								<label for="checkbox" class="ml-2 text-sm font-medium">Slovakia farm</label>
-							</div>
+							@foreach ($categories as $item)
+								<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
+									<input from="search_form_mobile" type="checkbox" name="supplier[]" id="checkbox_{{$i}}" type="checkbox" value="{{$item}}" {{ !empty($request->supplier) && in_array($item, $request->supplier) ? 'checked' : '' }} class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+									<label for="checkbox" class="ml-2 text-sm font-medium">{{$item}}</label>
+								</div>
+								@php($i++)
+							@endforeach
 
 
 							<p class="text-l mb-2">Dostpunosť</p>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_4")'>
-								<input from="search_form" type="checkbox" name="name" id="m_checkbox_4" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
+								<input from="search_form_mobile" type="checkbox" name="available[]" id="checkbox_{{$i}}" type="checkbox" value="1" {{ !empty($request->available) && in_array("1", $request->available) ? 'checked' : '' }} class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Na sklade</label>
 							</div>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_5")'>
-								<input from="search_form" type="checkbox" name="name" id="m_checkbox_5" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-								<label for="checkbox" class="ml-2 text-sm font-medium">Na ceste</label>
-							</div>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_6")'>
-								<input from="search_form" type="checkbox" name="name" id="m_checkbox_6" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							@php($i++)
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
+								<input from="search_form_mobile" type="checkbox" name="available[]" id="checkbox_{{$i}}" type="checkbox" value="0" {{ !empty($request->available) && in_array("0", $request->available) ? 'checked' : '' }} class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Nedostupne</label>
 							</div>
-
+							@php($i++)
+							
 							<p class="text-l mb-2">Zoradenie</p>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_7")'>
-								<input from="search_form" type="checkbox" name="most_selled" id="m_checkbox_7" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-								<label for="checkbox" class="ml-2 text-sm font-medium">Najpredávanejšie</label>
-							</div>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_8")'>
-								<input from="search_form" type="checkbox" name="expensive" id="m_checkbox_8" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
+								<input from="search_form_mobile" type="checkbox" name="order" id="checkbox_{{$i}}" type="checkbox" value="expensive" {{$request !=null && $request->order == "expensive" ? "checked" : ''}} class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Najdrahšie</label>
 							</div>
-							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("m_checkbox_9")'>
-								<input from="search_form" type="checkbox" name="cheap" id="m_checkbox_9" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							@php($i++)
+							<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_{{$i}}")'>
+								<input from="search_form_mobile" type="checkbox" name="order" id="checkbox_{{$i}}" type="checkbox" value="cheap" {{$request !=null && $request->order == "cheap" ? "checked" : ''}} class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 								<label for="checkbox" class="ml-2 text-sm font-medium">Najlacnejšie</label>
 							</div>
+							@if($request->search != null)
+								<input type="hidden" name="search" value="{{$request->search}}">
+							@endif
 					</div>
 					<div class="flex items-center p-6 space-x-2 border-t-4 border-gray-200 rounded-b ">
-						<button form="edit_pruduct_form" class="bg-green-500 hover:bg-green-300 hover:text-green-500 text-white font-bold py-2 px-4 rounded-full">Vyhľadať</button>
+						<button form="search_form_mobile" type="submit" class="bg-green-500 hover:bg-green-300 hover:text-green-500 text-white font-bold py-2 px-4 rounded-full">Vyhľadať</button>
 					</div>
 				</form>
 			</div>
