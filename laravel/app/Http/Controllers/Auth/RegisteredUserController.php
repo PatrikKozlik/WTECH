@@ -36,6 +36,10 @@ class RegisteredUserController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ],[
+            'password.min' => "Heslo musí mať najmenej 8 znakov",
+            'password.confirmed' => "Heslá sa nezhodujú",
+            'email.unique' => "Email už existuje"
         ]);
 
         $user = User::create([

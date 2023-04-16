@@ -39,9 +39,8 @@ class VoluntaryRegistrationController extends Controller
         $user->last_name = $request->surname;
         $user->save();
         
-        $wholeStreet = explode(" ", $request->street);
-        $street = $wholeStreet[0]; 
-        $street_nu =  $wholeStreet[1]; 
+        $street = $request->street; 
+        $street_nu =  $request->street_n; 
 
         $add = Address::join('postal_code as p', 'p.id', '=', 'address.postalcode_id')
                         ->join('street as s', 's.id', '=', 'p.street_id')
