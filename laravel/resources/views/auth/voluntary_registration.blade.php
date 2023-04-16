@@ -18,10 +18,20 @@
 					<label for="surname" class="text-white float-left">Priezvisko:</label>
 					<input id="surname" type="text" name="surname" class="my-2 w-full h-10 rounded-md p-2 text-lg" required autofocus />
 					
-					<!-- Street -->
-					<label for="street" class="text-white float-left">Ulica a číslo:</label>
-					<input id="street" type="text" name="street" class="my-2 w-full h-10 rounded-md p-2 text-lg" required autofocus />
-					
+					<div class="flex justify-between">
+						<!-- Street -->
+						<div class="">
+							<label for="street" class="text-white float-left">Ulica:</label>
+							<input id="street" type="text" name="street" class="my-2 w-full h-10 rounded-md p-2 text-lg" required autofocus />
+						</div>
+
+						<!-- Street Number -->
+						<div class="ml-2">
+							<label for="street_n" class="text-white float-left">Číslo ulice:</label>
+							<input id="street_n" type="text" name="street_n" class="my-2 w-full h-10 rounded-md p-2 text-lg" required autofocus />
+						</div>
+					</div>
+
 					<!-- City -->
 					<label for="city" class="text-white float-left">Mesto:</label>
 					<input id="city" type="text" name="city" class="my-2 w-full h-10 rounded-md p-2 text-lg" required autofocus />

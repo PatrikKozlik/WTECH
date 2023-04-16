@@ -99,7 +99,7 @@ class CreateInitDatabase extends Migration
             $table->id();
             $table->dateTime('create_date');    
             $table->unsignedBigInteger('postalcode_id');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('state_id');
 
             $table->foreign('postalcode_id')
@@ -110,7 +110,7 @@ class CreateInitDatabase extends Migration
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');
+                ->onDelete('cascade')->nullable();
 
             $table->foreign('state_id')
                 ->references('id')
@@ -165,15 +165,27 @@ class CreateInitDatabase extends Migration
         Schema::create('product_user', function (Blueprint $table) {
             $table->id();
             $table->integer('number_of_products');
+            $table->string('first_name', 25)->nullable();
+            $table->string('last_name', 25)->nullable();
+            
+            $table->string('transport_type', 25);
+            $table->string('payment_type', 25);
+            
             $table->dateTime('create_date');
-
-            $table->unsignedBigInteger('user_id');
+            
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('address_id')->nullable();
+
+            $table->foreign('address_id')
+                ->references('id')
+                ->on('address')
+                ->onDelete('cascade')->nullable();
 
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
-                ->onDelete('cascade');
+                ->onDelete('cascade')->nullable();
 
             $table->foreign('product_id')
                 ->references('id')
