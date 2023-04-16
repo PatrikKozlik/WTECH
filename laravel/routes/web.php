@@ -40,10 +40,11 @@ Route::get('/product/{value}',  [ProductController::class, 'product_view'])->nam
 
 Route::get('contact',  [ContactController::class, 'contact_view'])->name('contact');
 
-Route::get('addToCart',  [CartController::class, 'cart_add'])->name('addToCart');
+Route::post('addToCart',  [CartController::class, 'cart_add'])->name('addToCart');
+Route::post('remove',  [CartController::class, 'cart_remove'])->name('remove_from_cart');
 Route::get('cart1',  [CartController::class, 'cart1_view'])->name('cart1');
-Route::get('cart2',  [CartController::class, 'cart2_view'])->name('cart2');
-Route::get('cart3',  [CartController::class, 'cart3_view'])->name('cart3');
+Route::post('cart2',  [CartController::class, 'cart2_view'])->name('cart2');
+Route::post('cart3',  [CartController::class, 'cart3_view'])->name('cart3');
 
 Route::get('voluntary_register', [VoluntaryRegistrationController::class, 'create'])->name('voluntary_register');
 Route::post('voluntary_register', [VoluntaryRegistrationController::class, 'store']);

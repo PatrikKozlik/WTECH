@@ -16,50 +16,53 @@
 		<div class="bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 w-11/12 md:w-10/12 p-4">		
 			<h1 class="text-3xl text-white font-bold text-center m-4">Dodacie údaje</h1>
 			
-			<form action="">
+			<form id="finish_order" method="POST" action="{{route('save_product')}}">
 				<div class="grid place-items-center w-full">
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6 justify-items-center w-full md:w-3/4 xl:w-2/3 py-4">
 						<div class="w-full">
 							<label for="firstname" class="text-white float-left">Meno:</label>
-							<input id="firstname" type="text" class="w-full h-10 rounded-md p-2 text-lg">
+							<input form="finish_order" id="firstname" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						<div class="w-full">
 							<label for="lastname" class="text-white float-left">Priezvisko:</label>
-							<input id="lastname" type="text" class="w-full h-10 rounded-md p-2 text-lg">
+							<input form="finish_order" id="lastname" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						<div class="w-full">
 							<label for="street" class="text-white float-left">Ulica:</label>
-							<input id="street" type="text" class="w-full h-10 rounded-md p-2 text-lg">
+							<input form="finish_order" id="street" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						<div class="w-full">
 							<label for="city" class="text-white float-left">Mesto:</label>
-							<input id="city" type="text" class="w-full h-10 rounded-md p-2 text-lg">
+							<input form="finish_order" id="city" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						<div class="w-full">
 							<label for="psc" class="text-white float-left">PSČ:</label>
-							<input id="psc" type="text" class="w-full h-10 rounded-md p-2 text-lg">
+							<input form="finish_order" id="psc" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						<div class="w-full">
 							<label for="telephone-number" class="text-white float-left">Telefónne číslo:</label>
-							<input id="telephone-number" type="tel" class="w-full h-10 rounded-md p-2 text-lg">
+							<input form="finish_order" id="telephone-number" type="tel" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						<div class="w-full">
 							<label for="email" class="text-white float-left">E-mailová adresa:</label>
-							<input id="email" type="email" class="w-full h-10 rounded-md p-2 text-lg">
+							<input form="finish_order" id="email" type="email" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
-						<div class="w-full">
-							<label for="password" class="text-white float-left">Heslo:</label>
-							<input id="password" type="password" class="w-full h-10 rounded-md p-2 text-lg">
-						</div>
+						@if($need_address == 1)
+							<div class="w-full">
+								<label for="password" class="text-white float-left">Adresa pošty:</label>
+								<input form="finish_order" id="password" type="password" class="w-full h-10 rounded-md p-2 text-lg" required>
+							</div>
+						@endif
 					</div>
+					@auth
+						<div class="my-2">
+							<input id="load-data" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+							<label for="load-data" class="ml-2 text-sm font-medium text-white">Použiť uložené údaje</label>
+						</div>
+					@endauth
 					
 					<div class="my-2">
-						<input id="load-data" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-						<label for="load-data" class="ml-2 text-sm font-medium text-white">Použiť uložené údaje</label>
-					</div>
-					
-					<div class="my-2">
-						<input id="terms-consent" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
+						<input form="finish_order" id="terms-consent" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded" required>
 						<label for="terms-consent" class="ml-2 text-sm font-medium text-white">Súhlasím s obchodnými podmienkami</label>
 					</div>
 				</div>
@@ -68,14 +71,14 @@
 				
 			</form>
 			<div>
-				<a href="cart2.html">
+				<a href="{{route('cart1')}}">
 					<button type="button" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">
 						<i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
 						Späť
 					</button>
 				</a>
 				
-				<button id="save_button" class="bg-green-500 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full float-right">
+				<button form="finish_order" type="submit" id="save_button" class="bg-green-500 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full float-right">
 					Pokračovať
 					<i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
 				</button>

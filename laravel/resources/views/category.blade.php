@@ -125,8 +125,8 @@
 					<div class="p-6 space-y-6">
 						<p class="text-l mb-2">Cena</p>
 							<div class="grid grid-cols-2 m-2 mb-6 w-2/3">
-								<input from="search_form_mobile" type="number" name="low_price" value="{{$request != null ? $request->low_price : ''}}" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Od">
-								<input from="search_form_mobile" type="number" name="high_price" value="{{$request != null ? $request->high_price : ''}}" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Do">
+								<input from="search_form_mobile" type="number" min="0" name="low_price" value="{{$request != null ? $request->low_price : ''}}" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Od">
+								<input from="search_form_mobile" type="number" min="0" name="high_price" value="{{$request != null ? $request->high_price : ''}}" class="w-16 bg-neutral-200 placeholder-gray-500 placeholder-opacity-100 rounded-md px-2" type="text" placeholder="Do">
 							</div>
 
 							<!-- filter checkboxes -->
