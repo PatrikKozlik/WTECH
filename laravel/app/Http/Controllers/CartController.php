@@ -69,6 +69,9 @@ class CartController extends Controller
 
     public function cart2_view(Request $request){
         $cart = session()->get('my_cart',[]);
+        if(count($cart) == 0){
+            return redirect()->route('cart1');
+        }
         //check values and rewrite them in session
         for ($i= 0; $i < count($request->id); $i++) {
             foreach ($cart as $key => $cartItem) {
@@ -146,7 +149,7 @@ class CartController extends Controller
                 'address_id' => $address->id,
             ]);
         }
-        Session::flush();
+        Session::forget('my_cart');
         return redirect()->route('index')->with('success', 'Action was successful!');
     }
 
@@ -160,7 +163,7 @@ class CartController extends Controller
                 'product_id' => $product[0],
             ]);
         }
-        Session::flush();
+        Session::forget('my_cart');
         return redirect()->route('index')->with('success', 'Action was successful!');
         
     }

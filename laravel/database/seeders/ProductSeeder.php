@@ -106,6 +106,52 @@ class ProductSeeder extends Seeder
                 'supplier_id' => 1,
                 'details' => 'Zdravá výživa je kľúčom k zdraviu a dlhovekosti vášho psa. Naše jedlo pre psov je navrhnuté tak, aby poskytovalo vašim psom všetky potrebné živiny pre zdravý a šťastný život. Obsahuje vysoký podiel bielkovín, vitamínov a minerálov, ktoré podporujú správne fungovanie tráviaceho systému, srdca a imunitného systému. S našim jedlom pre psov si môžete byť istí, že poskytujete vašim psom výživu, ktorá im pomôže zostať zdraví a v dobrej kondícii. Vyskúšajte naše jedlo pre psov a uvidíte rozdiel v zdraví a vitalite vášho psa.',
             ],
+            [
+                'product_name' => 'Klbko pre mačku',
+                'price' => 9.99,
+                'number_of_products' => 1000,
+                'available' => 1,
+                'category_id' => 1,
+                'supplier_id' => 4,
+                'details' => 'Máte doma mačku, ktorá má problémy s kĺbmi? Nezúfajte, máme pre vás riešenie! Predstavujeme vám náš nový produkt - klbko pre mačky. Naše klbko pre mačky je špeciálne navrhnuté tak, aby pomohlo zmierniť bolesti a podporilo zdravie kĺbov vašej mačky. Obsahuje všetky potrebné zložky pre podporu zdravia kĺbov, vrátane glukosamínu a chondroitínu, ktoré pomáhajú udržiavať spoje zdravé a pohyblivé.',
+            ],
+            [
+                'product_name' => 'Hračka pre psa',
+                'price' => 5,
+                'number_of_products' => 100,
+                'available' => 1,
+                'category_id' => 1,
+                'supplier_id' => 5,
+                'details' => 'Hračky sú pre našich psích priateľov veľmi dôležité. Okrem toho, že s nimi trávia čas a bavia sa, môžu im pomôcť udržiavať fyzickú kondíciu a mentálnu pohodu. Predstavujeme vám našu novú hračku pre psov.',
+            ],
+            [
+                'product_name' => 'Domček pre včely',
+                'price' => 130,
+                'number_of_products' => 100,
+                'available' => 1,
+                'category_id' => 2,
+                'supplier_id' => 6,
+                'details' => 'Včely sú dôležitými opylovačmi a ich počet sa v poslednej dobe znižuje. Preto sme vyvinuli náš nový produkt - včelí dom, ktorý poskytuje útulné a bezpečné miesto pre včely na život. Náš včelí dom je vyrobený z kvalitných a ekologických materiálov, ktoré sú priateľské k životnému prostrediu a neškodia včelám. Dom má správne rozmery a otvory, ktoré umožňujú včelám vstup a únik, a zároveň poskytujú dostatok priestoru pre ich potreby.',
+            ],
+            [
+                'product_name' => 'Klietka pre vtáčika',
+                'price' => 15.89,
+                'number_of_products' => 3,
+                'available' => 1,
+                'category_id' => 2,
+                'supplier_id' => 7,
+                'details' => 'Klietka pre vtáčika je praktický a bezpečný spôsob, ako poskytnúť vašim domácim vtákom príjemné a útulné miesto na život. Naša klietka je vyrobená z kvalitných a bezpečných materiálov, ktoré zabezpečujú dostatočnú ventiláciu a ochranu pred únikom vtákov. Klietka má aj praktické doplnky, ako sú kŕmidlo a napájacie nádobky, čo uľahčuje starostlivosť o vašich vtákov. Je to ideálny spôsob, ako poskytnúť vašim vtákom bezpečné a pohodlné prostredie na život.',
+            ],
+            [
+                'product_name' => 'Dvojité vodítko',
+                'price' => 15.89,
+                'number_of_products' => 0,
+                'available' => 0,
+                'category_id' => 2,
+                'supplier_id' => 6,
+                'details' => 'Klietka pre vtáčika je praktický a bezpečný spôsob, ako poskytnúť vašim domácim vtákom príjemné a útulné miesto na život. Naša klietka je vyrobená z kvalitných a bezpečných materiálov, ktoré zabezpečujú dostatočnú ventiláciu a ochranu pred únikom vtákov. Klietka má aj praktické doplnky, ako sú kŕmidlo a napájacie nádobky, čo uľahčuje starostlivosť o vašich vtákov. Je to ideálny spôsob, ako poskytnúť vašim vtákom bezpečné a pohodlné prostredie na život.',
+            ],
+
         ]);
     }
 }

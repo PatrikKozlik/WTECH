@@ -69,7 +69,7 @@
 <script>
     const searchBar = document.querySelector("#search");
     const changeText = setInterval(changeIt, 2500);
-    const words = ["Plyšová opica", "Potrava pre psa", "Klietka pre vtáčika", "Granule pre mačky", "Kolotoč pre škrečka"];
+    const words = ["Domček pre včely", "Dobrota pre psa", "Klietka pre vtáčika", "Granule", "Obilie pre ovce"];
     var remove = false;
     var index = 0;
 
