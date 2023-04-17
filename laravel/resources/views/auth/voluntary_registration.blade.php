@@ -47,7 +47,6 @@
 					<!-- Buttons -->
 					<div class="grid grid-cols-2 gap-16 mt-4">
 						<a href="/home" class="underline text-white hover:text-stone-200 mb-2 float-right">Neskôr</a>
-						<button type="submit" name="submit" value="submit" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Neskôr</button>
 						<x-button class="bg-green-500 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">
 							Dokončiť registráciu
 						</x-button>

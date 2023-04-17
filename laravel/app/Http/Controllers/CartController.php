@@ -11,6 +11,8 @@ use App\Models\Postal_code;
 use App\Models\Street_number;
 use App\Models\Street;
 use App\Models\Product_user;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
@@ -100,64 +102,75 @@ class CartController extends Controller
         if($request->shipping == 'delivery_cash' || $request->shipping == 'mailroom'){
             $need_address = 1;
         }
-        return view('cart3', ['need_address' => $need_address]);
+        $user = null;
+        if(auth()->check()){
+            $user = User::where('email', Auth::user()->email)->first();
+        }
+        return view('cart3', ['need_address' => $need_address, 'user' => $user]);
     }
 
     public function save_product(Request $request){
         
-        if(){
+        $city = City::create([
+            'value' => $request->city,
+        ]);
 
-            $city = City::create([
-                'value' => $request->city,
-            ]);
+        $street_n = Street_number::create([
+            'value' => $request->street_num,
+            'city_id' => $city->id,
+        ]);
 
-            $street_n = Street_number::create([
-                'value' => $street_nu,
-                'city_id' => $city->id,
-            ]);
+        $street = Street::create([
+            'value' => $request->street,
+            'street_number_id' => $street_n->id,
+        ]);
+        
+        $postalCode = Postal_code::create([
+            'value' => $request->postcode,
+            'street_id' => $street->id,
+        ]);
+        
+        $address = Address::create([
+            'postalcode_id' => $postalCode->id,
+            'state_id' => 1,
+        ]);
 
-            $street = Street::create([
-                'value' => $street,
-                'street_number_id' => $street_n->id,
-            ]);
-            
-            $postalCode = Postal_code::create([
-                'value' => $request->postcode,
-                'street_id' => $street->id,
-            ]);
-            
-            $address = Address::create([
-                'postalcode_id' => $postalCode->id,
-                'state_id' => 1,
-            ]);
-
-            
+        foreach(session()->get('my_cart',[]) as $product){
             $product_user = Product_user::create([
-                'number_of_products' => ,
-                'first_name' => ,
-                'last_name' => ,
-                'transport_type' => ,
-                'payment_type' => ,
-                'user_id' => ,
-                'product_id' => ,
+                'number_of_products' => $product[1],
+                'first_name' => $request->firstname,
+                'last_name' => $request->lastname,
+                'transport_type' => session()->get('shipping'),
+                'payment_type' => session()->get('payment'),
+                'product_id' => $product[0],
                 'address_id' => $address->id,
             ]);
-
-        }else{
-
-            $product_user = Product_user::create([
-                'number_of_products' => ,
-                'transport_type' => ,
-                'payment_type' => ,
-                'user_id' => ,
-                'product_id' => ,
-            ]);
-
         }
-        
-        
-        return view('/');
+        Session::flush();
+        return redirect()->route('index')->with('success', 'Action was successful!');
     }
+
+    public function save_registred(){
+        foreach(session()->get('my_cart',[]) as $product){
+            $product_user = Product_user::create([
+                'number_of_products' => $product[1],
+                'transport_type' => session()->get('shipping'),
+                'payment_type' => session()->get('payment'),
+                'user_id' => Auth::user()->id,
+                'product_id' => $product[0],
+            ]);
+        }
+        Session::flush();
+        return redirect()->route('index')->with('success', 'Action was successful!');
+        
+    }
+        
+            
+
+        
+        
+        
+        
 
     
 }

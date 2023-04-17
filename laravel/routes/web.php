@@ -30,7 +30,7 @@ use App\Http\Controllers\VoluntaryRegistrationController;
 
 require __DIR__.'/auth.php';
 
-Route::get('/',  [IndexController::class, 'index_view']);
+Route::get('/',  [IndexController::class, 'index_view'])->name('index');
 
 Route::get('/home',  [AdminController::class, 'admin_view'])->name('home');
 
@@ -45,6 +45,8 @@ Route::post('remove',  [CartController::class, 'cart_remove'])->name('remove_fro
 Route::get('cart1',  [CartController::class, 'cart1_view'])->name('cart1');
 Route::post('cart2',  [CartController::class, 'cart2_view'])->name('cart2');
 Route::post('cart3',  [CartController::class, 'cart3_view'])->name('cart3');
+Route::post('finish',  [CartController::class, 'save_product'])->name('save_product');
+Route::post('finish_registered',  [CartController::class, 'save_registred'])->name('finish_registered');
 
 Route::get('voluntary_register', [VoluntaryRegistrationController::class, 'create'])->name('voluntary_register');
 Route::post('voluntary_register', [VoluntaryRegistrationController::class, 'store']);

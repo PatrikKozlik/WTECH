@@ -34,6 +34,32 @@
 
 		</div>
 	</div>
+
+    @if(session('success'))
+        <!-- Modal content -->
+        <div id="successModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="bg-stone-800/70 flex items-center justify-center fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal h-full">
+            <div class="relative w-full h-full max-w-2xl md:h-auto">
+                <div class="relative bg-gradient-to-t to-amber-700 from-amber-500 rounded-lg shadow border-2 border-amber-500">
+                    <div class="flex items-start justify-between p-4 border-b-4 rounded-t border-white">
+                        <h3 class="text-xl font-semibold text-white">
+                            Objednanie
+                        </h3>
+                        <button onclick="document.getElementById('successModal').style.display='none'" class="text-white font-bold bg-transparent rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-hide="staticModal">
+                            <i class="fa fa-times text-2xl" aria-hidden="true"></i> 
+                        </button>
+                    </div>
+                    <div class="p-6 space-y-6">
+                        <p class="leading-relaxed font-bold text-2xl text-center text-white">
+                            Objednanie bolo úspešné
+                        </p>
+                    </div>
+                    <div class="flex items-center p-6 space-x-2 border-t-4 border-gray-200 rounded-b">
+                        <button onclick="document.getElementById('successModal').style.display='none'" class="bg-stone-600 hover:bg-stone-400 hover:text-stone-600 text-white font-bold py-2 px-4 rounded-full">Zrušiť</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 </section>
 @endsection
 

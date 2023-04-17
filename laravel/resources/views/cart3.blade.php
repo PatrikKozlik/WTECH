@@ -17,47 +17,53 @@
 			<h1 class="text-3xl text-white font-bold text-center m-4">Dodacie údaje</h1>
 			
 			<form id="finish_order" method="POST" action="{{route('save_product')}}">
+				@csrf
+			</form>
 				<div class="grid place-items-center w-full">
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-6 justify-items-center w-full md:w-3/4 xl:w-2/3 py-4">
 						<div class="w-full">
 							<label for="firstname" class="text-white float-left">Meno:</label>
-							<input form="finish_order" id="firstname" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
+							<input form="finish_order" name="firstname" id="firstname" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						<div class="w-full">
 							<label for="lastname" class="text-white float-left">Priezvisko:</label>
-							<input form="finish_order" id="lastname" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
+							<input form="finish_order" name="lastname" id="lastname" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						<div class="w-full">
 							<label for="street" class="text-white float-left">Ulica:</label>
-							<input form="finish_order" id="street" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
+							<input form="finish_order" name="street" id="street" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
+						</div>
+						<div class="w-full">
+							<label for="street_num" class="text-white float-left">Číslo:</label>
+							<input form="finish_order" name="street_num" id="street_num" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						<div class="w-full">
 							<label for="city" class="text-white float-left">Mesto:</label>
-							<input form="finish_order" id="city" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
+							<input form="finish_order" name="city" id="city" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						<div class="w-full">
 							<label for="psc" class="text-white float-left">PSČ:</label>
-							<input form="finish_order" id="psc" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
-						</div>
-						<div class="w-full">
-							<label for="telephone-number" class="text-white float-left">Telefónne číslo:</label>
-							<input form="finish_order" id="telephone-number" type="tel" class="w-full h-10 rounded-md p-2 text-lg" required>
+							<input form="finish_order" name="postcode" id="psc" type="text" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						<div class="w-full">
 							<label for="email" class="text-white float-left">E-mailová adresa:</label>
-							<input form="finish_order" id="email" type="email" class="w-full h-10 rounded-md p-2 text-lg" required>
+							<input form="finish_order" name="email" id="email" type="email" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
 						@if($need_address == 1)
 							<div class="w-full">
 								<label for="password" class="text-white float-left">Adresa pošty:</label>
-								<input form="finish_order" id="password" type="password" class="w-full h-10 rounded-md p-2 text-lg" required>
+								<input form="finish_order" name="postaddress" id="password" type="password" class="w-full h-10 rounded-md p-2 text-lg" required>
 							</div>
 						@endif
 					</div>
 					@auth
 						<div class="my-2">
-							<input id="load-data" type="checkbox" value="" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-							<label for="load-data" class="ml-2 text-sm font-medium text-white">Použiť uložené údaje</label>
+							<form id="reg_post" method="POST" action="{{route('finish_registered')}}">
+								@csrf
+								<button form="reg_post" type="submit" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">
+									Objednať ako prihlasený používateľ
+								</button>
+							</form>
 						</div>
 					@endauth
 					
@@ -69,7 +75,7 @@
 
 
 				
-			</form>
+			
 			<div>
 				<a href="{{route('cart1')}}">
 					<button type="button" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">
