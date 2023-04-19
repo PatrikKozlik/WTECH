@@ -72,7 +72,7 @@ class VoluntaryRegistrationController extends Controller
             ]);
             
             $postalCode = Postal_code::create([
-                'value' => $request->postcode,
+                'value' => $request->postal_code,
                 'street_id' => $street->id,
             ]);
             
@@ -93,7 +93,7 @@ class VoluntaryRegistrationController extends Controller
         
         }
 
-        return redirect('/home');
+        return redirect('/profile');
     }
 
 }

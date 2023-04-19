@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VoluntaryRegistrationController;
 
 /*
@@ -32,13 +33,16 @@ require __DIR__.'/auth.php';
 
 Route::get('/',  [IndexController::class, 'index_view'])->name('index');
 
-Route::get('/home',  [AdminController::class, 'admin_view'])->name('home');
+Route::get('/home',  [AdminController::class, 'admin_view'])->name('home')->middleware('auth');;
 
 Route::get('category/{type}',  [CategoryController::class, 'category_filter'])->name('category');
 
 Route::get('/product/{value}',  [ProductController::class, 'product_view'])->name('product');
 
 Route::get('contact',  [ContactController::class, 'contact_view'])->name('contact');
+
+Route::get('profile',  [ProfileController::class, 'profile_view'])->name('profile')->middleware('auth');
+Route::post('profile',  [ProfileController::class, 'edit_profile']);
 
 Route::post('addToCart',  [CartController::class, 'cart_add'])->name('addToCart');
 Route::post('remove',  [CartController::class, 'cart_remove'])->name('remove_from_cart');

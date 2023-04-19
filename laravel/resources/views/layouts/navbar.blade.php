@@ -2,7 +2,7 @@
 <nav class="fixed w-full top-0 z-50 px-2 sm:px-4 py-2.5 rounded bg-gradient-to-b from-amber-700 to-amber-800 text-white items-center border-solid border-b-2 border-amber-500">
     <div class="container flex flex-wrap items-center justify-between mx-auto">
         <div class="flex md:order-1">
-            <h2><a href="/">My Website</a></h2>
+            <h2><a href="/">Pet Home</a></h2>
         </div>
         
         <div class="flex order-2 md:hidden">
@@ -29,7 +29,11 @@
                 @auth
                     {{-- <a href="/login">{{ Auth::user()->email }}</a> --}}
                     
-                    <li class="mx-3"><a href="/login"><i class="fa-solid fa-user-gear"></i></i></a></li>
+                    @if(Auth::user()->role_id == 4)
+                        <li class="mx-3"><a href="/home"><i class="fa-sharp fa-solid fa-table-list"></i></a></li>
+                    @endif
+
+                    <li class="mx-3"><a href="/profile"><i class="fa-solid fa-user-gear"></i></i></a></li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <li class="mx-3"><a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();"><i class="fa-solid fa-right-from-bracket"></i></i></a></li>
