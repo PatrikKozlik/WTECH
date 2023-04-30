@@ -16,49 +16,21 @@
 		</tr>
 		</thead>
 		<tbody>
-		<tr>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Link na produkt tam sa budu menit fotky</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indiana</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-            
-        </tr>
-		<tr>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Link na produkt tam sa budu menit fotky</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indiana</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
+            {{-- {{dd($products)}} --}}
+        @if(count($products) == 0)
+            <td colspan="6" class="border border-slate-700 w-1/12 text-center py-1">Žiadna vytvorená objednávka</td>
+        @endif
 
-        </tr>
-		<tr>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Link na produkt tam sa budu menit fotky</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indiana</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-
-        </tr>
-		<tr>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Link na produkt tam sa budu menit fotky</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indiana</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-        </tr>
-		<tr>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Link na produkt tam sa budu menit fotky</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indiana</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-        </tr>
+        @foreach ($products as $product)
+            <tr>
+                <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->id }}</td>
+                <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->order_code }}</td>
+                <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->name }}</td>
+                <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->price*$products->amount }}</td>
+                <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->amount }}</td>
+                <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->date }}</td>
+            </tr>
+        @endforeach
 		</tbody>
 	</table>
 
