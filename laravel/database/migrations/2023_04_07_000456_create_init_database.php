@@ -169,6 +169,7 @@ class CreateInitDatabase extends Migration
             $table->string('last_name', 25)->nullable();
             $table->string('postal_adress', 150)->nullable();
             $table->string('email', 254)->nullable();
+            $table->integer('order_code');
             
             $table->string('transport_type', 25);
             $table->string('payment_type', 25);

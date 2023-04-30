@@ -72,7 +72,7 @@ class VoluntaryRegistrationController extends Controller
             ]);
             
             $postalCode = Postal_code::create([
-                'value' => $request->postal_code,
+                'value' => $request->postcode,
                 'street_id' => $street->id,
             ]);
             

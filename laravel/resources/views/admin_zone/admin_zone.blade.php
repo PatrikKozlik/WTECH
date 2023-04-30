@@ -4,6 +4,12 @@
 <section class="mt-20">
 	<h1 class="text-3xl font-extrabold text-center"><span class="text-transparent bg-clip-text bg-gradient-to-r to-amber-700 from-amber-300">Detajly</span> o produktoch</h1>
 
+	<div class="content-center">
+		<button class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">
+			Pridať produkt
+		</button>
+	</div>
+	
 	<table class="border-separate border border-slate-500 mx-auto mt-6 ml-2 mr-2 sm:ml-16 sm:mr-16">
 		<thead class="bg-gradient-to-b to-amber-700 from-amber-400 text-white">
 		<tr>

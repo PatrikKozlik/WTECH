@@ -49,12 +49,12 @@
 							<label for="email" class="text-white float-left">E-mailová adresa:</label>
 							<input form="finish_order" name="email" id="email" type="email" class="w-full h-10 rounded-md p-2 text-lg" required>
 						</div>
-						@if($need_address == 1)
+						{{-- @if($need_address == 1)
 							<div class="w-full">
 								<label for="password" class="text-white float-left">Adresa pošty:</label>
 								<input form="finish_order" name="postaddress" id="password" type="password" class="w-full h-10 rounded-md p-2 text-lg" required>
 							</div>
-						@endif
+						@endif --}}
 					</div>
 					@auth
 						<div class="my-2">

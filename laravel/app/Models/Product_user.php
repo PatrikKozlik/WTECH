@@ -13,6 +13,7 @@ class Product_user extends Model
         'number_of_products',
         'first_name',
         'last_name',
+        'order_code',
         'transport_type',
         'payment_type',
         'user_id',

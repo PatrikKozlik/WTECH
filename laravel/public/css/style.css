@@ -8,3 +8,16 @@ body{
 .height_product{
     height: inherit;
 }
+
+.custom_cart{
+    position: relative;
+    top: 7px;
+    left: -12px;
+    background: black;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 38px;
+    font-size: 15px;
+    height: 23px;
+}
+

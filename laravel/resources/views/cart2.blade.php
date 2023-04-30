@@ -22,11 +22,6 @@
 				<div class="flex flex-col w-full place-items-center">
 					<div><h2 class="text-3xl w-11/12 text-white font-bold mb-4">Doprava</h2></div>
 					
-					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_1")'>
-						<input form="delivery" id="checkbox_1" type="checkbox" name="shipping" value="mailroom" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
-						<label for="checkbox_1" class="ml-2 text-sm font-medium">Zásielkovňa</label>
-					</div>
-					
 					<div class="bg-neutral-200 rounded-md p-2 w-2/3 m-2" onclick='check_checkbox("checkbox_2")'>
 						<input form="delivery" id="checkbox_2" type="checkbox" name="shipping" value="personally" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="checkbox_2" class="ml-2 text-sm font-medium">Osobne</label>

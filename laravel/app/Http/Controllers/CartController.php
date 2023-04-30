@@ -138,11 +138,28 @@ class CartController extends Controller
             'state_id' => 1,
         ]);
 
+        # Check order number
+        $order_number = Product_user::max('order_code');
+        if ($order_number == null){
+            $order_number = 1;
+        }else{
+            $order_number++;
+        }
+
+        # Descrease number of product in storage
+        foreach(session()->get('my_cart',[]) as $product){
+            $product_in_store = Products::find($product[0]);
+            $amount = $product_in_store->number_of_products;
+            $product_in_store = $amount - $product[1];
+            $product_in_store->save();
+        }
+
         foreach(session()->get('my_cart',[]) as $product){
             $product_user = Product_user::create([
                 'number_of_products' => $product[1],
                 'first_name' => $request->firstname,
                 'last_name' => $request->lastname,
+                'order_code' => $order_number,
                 'transport_type' => session()->get('shipping'),
                 'payment_type' => session()->get('payment'),
                 'product_id' => $product[0],
@@ -154,10 +171,28 @@ class CartController extends Controller
     }
 
     public function save_registred(){
+
+        # Check order number
+        $order_number = Product_user::max('order_code');
+        if ($order_number == null){
+            $order_number = 1;
+        }else{
+            $order_number++;
+        }
+
+        # Descrease number of product in storage
+        foreach(session()->get('my_cart',[]) as $product){
+            $product_in_store = Products::find($product[0]);
+            $amount = $product_in_store->number_of_products;
+            $product_in_store->number_of_products = $amount - $product[1];
+            $product_in_store->save();
+        }
+
         foreach(session()->get('my_cart',[]) as $product){
             $product_user = Product_user::create([
                 'number_of_products' => $product[1],
                 'transport_type' => session()->get('shipping'),
+                'order_code' => $order_number,
                 'payment_type' => session()->get('payment'),
                 'user_id' => Auth::user()->id,
                 'product_id' => $product[0],

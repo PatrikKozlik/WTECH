@@ -9,6 +9,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VoluntaryRegistrationController;
+use App\Http\Controllers\ProductsListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,7 +34,9 @@ require __DIR__.'/auth.php';
 
 Route::get('/',  [IndexController::class, 'index_view'])->name('index');
 
-Route::get('/home',  [AdminController::class, 'admin_view'])->name('home')->middleware('auth');;
+Route::get('/home',  [AdminController::class, 'admin_view'])->name('home')->middleware('auth');
+
+Route::get('/products_list',  [ProductsListController::class, 'product_list_view'])->name('products_list');
 
 Route::get('category/{type}',  [CategoryController::class, 'category_filter'])->name('category');
 
