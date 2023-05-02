@@ -3,21 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Products;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function admin_view(){
+    public function admin_view() {
         
         if(Auth::user()->role_id == 4)
         {
-            return view('admin_zone/admin_zone');
+            $products = Products::all();
+            return view('admin_zone/admin_zone', ['products' => $products]);
         } 
         else
         {
-            return view('profile');    
+            return redirect()->route('profile');
         }
 
 
     }
+
+
 }

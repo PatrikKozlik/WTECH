@@ -21,41 +21,15 @@
 		</tr>
 		</thead>
 		<tbody>
+		@foreach($products as $product)
 		<tr>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Link na produkt tam sa budu menit fotky</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indiana</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
+			<td class="border border-slate-700 w-1/12 text-center py-1">{{$product->id}}</td>
+			<td class="border border-slate-700 w-1/12 text-center py-1">{{$product->product_name}}</td>
+			<td class="border border-slate-700 w-1/12 text-center py-1">{{number_format(round($product->price, 2), 2)}}</td>
+			<td class="border border-slate-700 w-1/12 text-center py-1">{{$product->number_of_products}}</td>
+			<td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><a href="/admin/edit/{{$product->id}}"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></a></td>
 		</tr>
-		<tr>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Link na produkt tam sa budu menit fotky</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indiana</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-		</tr>
-		<tr>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Link na produkt tam sa budu menit fotky</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indiana</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-		</tr>
-		<tr>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Link na produkt tam sa budu menit fotky</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indiana</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-		</tr>
-		<tr>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Link na produkt tam sa budu menit fotky</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indiana</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">Indianapolis</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><button onclick="document.getElementById('editModal').style.display='flex'" class="w-full"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></button></td>
-		</tr>
+		@endforeach
 		</tbody>
 	</table>
 

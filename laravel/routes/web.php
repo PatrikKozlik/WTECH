@@ -34,7 +34,12 @@ require __DIR__.'/auth.php';
 
 Route::get('/',  [IndexController::class, 'index_view'])->name('index');
 
-Route::get('/home',  [AdminController::class, 'admin_view'])->name('home')->middleware('auth');
+Route::get('/admin',  [AdminController::class, 'admin_view'])->name('admin')->middleware('auth');
+
+// old path to admin zone
+Route::get('/home', function () {
+    return redirect()->route('admin');
+});
 
 Route::get('/products_list',  [ProductsListController::class, 'product_list_view'])->name('products_list');
 

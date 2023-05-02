@@ -18,7 +18,7 @@
                     {{-- <a href="/login">{{ Auth::user()->email }}</a> --}}
                     
                     @if(Auth::user()->role_id == 4)
-                        <a href="/home" class="mx-3"><i class="align-bottom fa-sharp fa-solid fa-table-list"></i></a>
+                        <a href="/admin" class="mx-3"><i class="align-bottom fa-sharp fa-solid fa-table-list"></i></a>
                     @endif
 
                     <a href="/profile" class="mx-3"><i class="align-bottom fa-solid fa-user-gear"></i></i></a>
