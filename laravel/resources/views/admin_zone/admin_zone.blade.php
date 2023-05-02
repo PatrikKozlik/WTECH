@@ -23,6 +23,8 @@
 			<th class="border border-slate-600 p-2">Názov</th>
 			<th class="border border-slate-600 p-2">Cena</th>
 			<th class="border border-slate-600 p-2">Počet kusov</th>
+			<th class="border border-slate-600 p-2">Kategória</th>
+			<th class="border border-slate-600 p-2">Výrobca</th>
 			<th class="border border-slate-600 p-2">Úpravy</th>
 		</tr>
 		</thead>
@@ -31,8 +33,10 @@
 		<tr>
 			<td class="border border-slate-700 w-1/12 text-center py-1">{{$product->id}}</td>
 			<td class="border border-slate-700 w-1/12 text-center py-1">{{$product->product_name}}</td>
-			<td class="border border-slate-700 w-1/12 text-center py-1">{{number_format(round($product->price, 2), 2)}}</td>
+			<td class="border border-slate-700 w-1/12 text-center py-1">{{number_format(round($product->price, 2), 2)}} €</td>
 			<td class="border border-slate-700 w-1/12 text-center py-1">{{$product->number_of_products}}</td>
+			<td class="border border-slate-700 w-1/12 text-center py-1">{{$product->category->value}}</td>
+			<td class="border border-slate-700 w-1/12 text-center py-1">{{$product->supplier->value}}</td>
 			<td class="border border-slate-700 w-1/12 text-center py-1 bg-green-100"><a href="/admin/edit/{{$product->id}}"><div class="w-full"><i class="fa fa-pencil" aria-hidden="true"></i></div></a></td>
 		</tr>
 		@endforeach
@@ -43,7 +47,7 @@
 
 
 <!-- Modal content -->
-<div id="editModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="bg-stone-800/70 items-center justify-center fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal h-full">
+<!-- <div id="editModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="bg-stone-800/70 items-center justify-center fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal h-full">
 	<div class="relative w-full h-full max-w-2xl md:h-auto">
 		<div class="relative bg-gradient-to-t to-amber-700 from-amber-500 rounded-lg shadow border-2 border-amber-500">
 			<div class="flex items-start justify-between p-4 border-b-4 rounded-t border-white">
@@ -77,7 +81,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 
 <!-- Modal content add product -->
