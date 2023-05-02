@@ -35,6 +35,8 @@ require __DIR__.'/auth.php';
 Route::get('/',  [IndexController::class, 'index_view'])->name('index');
 
 Route::get('/admin',  [AdminController::class, 'admin_view'])->name('admin')->middleware('auth');
+Route::get('/admin/edit/{value}',  [AdminController::class, 'admin_edit_view'])->name('admin_edit')->middleware('auth');
+Route::post('/admin/save', [AdminController::class, 'admin_edit_save'])->name('admin_edit_save')->middleware('auth');
 
 // old path to admin zone
 Route::get('/home', function () {
