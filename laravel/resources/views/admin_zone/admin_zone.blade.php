@@ -4,10 +4,16 @@
 <section class="mt-20">
 	<h1 class="text-3xl font-extrabold text-center"><span class="text-transparent bg-clip-text bg-gradient-to-r to-amber-700 from-amber-300">Detajly</span> o produktoch</h1>
 
-	<div class="flex justify-center my-3">
+	<!-- <div class="flex justify-center my-3">
 		<button class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full" onclick="document.getElementById('addModal').style.display='flex'">
 			Pridať produkt
 		</button>
+	</div> -->
+
+	<div class="flex justify-center my-3">
+		<a href="{{route('admin_create_product_view')}}">
+			<button class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">Pridať produkt</button>
+		</a>
 	</div>
 
 	<table class="border-separate border border-slate-500 mx-auto mt-6 ml-2 mr-2 sm:ml-16 sm:mr-16">
@@ -75,7 +81,7 @@
 
 
 <!-- Modal content add product -->
-<div id="addModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="bg-stone-800/70 items-center justify-center fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal h-full">
+<!-- <div id="addModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="bg-stone-800/70 items-center justify-center fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal h-full">
 	<div class="relative w-full h-full max-w-2xl md:h-auto">
 		<div class="relative bg-gradient-to-t to-amber-700 from-amber-500 rounded-lg shadow border-2 border-amber-500">
 			<div class="flex items-start justify-between p-4 border-b-4 rounded-t border-white">
@@ -109,6 +115,6 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 
 @endsection
