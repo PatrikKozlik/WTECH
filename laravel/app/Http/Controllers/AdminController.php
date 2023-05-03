@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Products;
 use App\Models\Supplier;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -31,13 +32,35 @@ class AdminController extends Controller
             $product = Products::where('id', '=', $value)->first();
             $categories = Category::all();
             $suppliers = Supplier::all();
-            return view('admin_zone/admin_edit', ['product' => $product, 'categories' => $categories, 'suppliers' => $suppliers]);
+
+            $path = public_path('images/' . $value);
+            if (File::isDirectory($path)) {
+                $files = File::files($path);
+            }
+            else
+            {
+                $files = [];
+            }
+
+            return view('admin_zone/admin_edit', ['product' => $product, 'categories' => $categories, 'suppliers' => $suppliers, 'files' => $files]);
         } 
         else
         {
             return redirect()->route('profile');
         }
 
+    }
+
+    public function admin_delete_file($value, $filename) {
+        if(Auth::user()->role_id == 4)
+        {
+            File::delete(public_path('images/' . $value . '/' . $filename));
+            return redirect()->route('admin_edit', ['value' => $value]);
+        } 
+        else
+        {
+            return redirect()->route('profile');
+        }
     }
 
     public function admin_edit_save(Request $request) {
@@ -88,6 +111,11 @@ class AdminController extends Controller
 
             $product->save();
 
+            $path = public_path('images/' . $product->id);
+            if (!File::isDirectory($path)) {
+                File::makeDirectory($path);
+            }
+
             return redirect()->route('admin');
         }
         else
@@ -95,4 +123,19 @@ class AdminController extends Controller
             return redirect()->route('profile');
         }
     }
+
+    public function admin_delete_product($value) {
+        if(Auth::user()->role_id == 4) {
+            Products::destroy($value);
+            
+            File::deleteDirectory(public_path('images/' . $value));
+
+            return redirect()->route('admin');
+        }
+        else
+        {
+            return redirect()->route('profile');
+        }
+    }
+
 }

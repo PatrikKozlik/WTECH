@@ -1,7 +1,9 @@
 @extends('layouts.app')
  
 @section('content')
-<section class="mt-20 flex items-center justify-center">
+<section class="mt-20 flex flex-col items-center justify-center">
+	<x-auth-validation-errors class="mb-4 mt-4 text-center" :errors="$errors" />
+	
 	<div class=" max-w-2xl ">
 		<div class="relative bg-gradient-to-t to-amber-700 from-amber-500 rounded-lg shadow border-2 border-amber-500">
 			<div class="flex items-start justify-between p-4 border-b-4 rounded-t border-white">
@@ -42,7 +44,7 @@
 					<div class="flex items-center my-3 justify-center">
 						<input form="edit_pruduct_form" id="available" name="available" type="checkbox"  value="1" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="available" class="ml-2 text-sm font-medium text-white">Dostupné</label>
-					</div>	
+					</div>
 				</form>
 			</div>
 			<div class="flex items-center p-6 space-x-2 border-t-4 border-gray-200 rounded-b">

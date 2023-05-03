@@ -39,6 +39,8 @@ Route::get('/admin/edit/{value}',  [AdminController::class, 'admin_edit_view'])-
 Route::post('/admin/save', [AdminController::class, 'admin_edit_save'])->name('admin_edit_save')->middleware('auth');
 Route::get('/admin/create',  [AdminController::class, 'admin_create_product_view'])->name('admin_create_product_view')->middleware('auth');
 Route::post('/admin/create/save',  [AdminController::class, 'admin_create_product_save'])->name('admin_create_product_save')->middleware('auth');
+Route::get('/admin/delete/{value}',  [AdminController::class, 'admin_delete_product'])->name('admin_delete_product')->middleware('auth');
+Route::get('/admin/deletefile/{value}/{filename}',  [AdminController::class, 'admin_delete_file'])->name('admin_delete_file')->middleware('auth');
 
 // old path to admin zone
 Route::get('/home', function () {

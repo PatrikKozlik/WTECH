@@ -1,7 +1,9 @@
 @extends('layouts.app')
  
 @section('content')
-<section class="mt-20 flex items-center justify-center">
+<section class="mt-20 flex flex-col items-center justify-center">
+	<x-auth-validation-errors class="mb-4 mt-4 text-center" :errors="$errors" />
+	
 	<div class=" max-w-2xl ">
 		<div class="relative bg-gradient-to-t to-amber-700 from-amber-500 rounded-lg shadow border-2 border-amber-500">
 			<div class="flex items-start justify-between p-4 border-b-4 rounded-t border-white">
@@ -53,7 +55,7 @@
 					<div class="flex items-center my-3 justify-center">
 						<input form="edit_pruduct_form" id="available" name="available" type="checkbox" @if ($product->available) checked @endif value="1" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="available" class="ml-2 text-sm font-medium text-white">Dostupné</label>
-					</div>	
+					</div>
 				</form>
 			</div>
 			<div class="flex items-center p-6 space-x-2 border-t-4 border-gray-200 rounded-b">
@@ -61,10 +63,35 @@
 				<a href="{{route('admin')}}">
 					<button class="bg-stone-600 hover:bg-stone-400 hover:text-stone-600 text-white font-bold py-2 px-4 rounded-full">Naspäť</button>
 				</a>
+				<a href="{{route('admin_delete_product', ['value' => $product->id])}}">
+					<button class="float-right bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded-full">Odstrániť</button>
+				</a>
 			</div>
 		</div>
 	</div>
 	
+	<table class="max-w-2xl border-separate border border-slate-500 mx-auto mt-6 ml-2 mr-2 sm:ml-16 sm:mr-16">
+		<thead class="bg-gradient-to-b to-amber-700 from-amber-400 text-white">
+			<tr>
+				<th class="border border-slate-600 p-2">Obrázok</th>
+				<th class="border border-slate-600 p-2">Názov súboru</th>
+				<th class="border border-slate-600 p-2">Odstrániť</th>
+			</tr>
+			</thead>
+			<tbody>
+				@foreach($files as $file)
+				<tr>
+					<td class="border border-slate-700 w-1/12 text-center py-1">
+						<img src="/images/{{$product->id}}/{{$file->getFilename()}}" class="w-16 h-16">
+					</td>
+					<td class="border border-slate-700 w-1/12 text-center py-1">{{$file->getFilename()}}</td>
+					<td class="border border-slate-700 w-1/12 text-center py-1 bg-red-100">
+						<a href="{{route('admin_delete_file', ['value' => $product->id, 'filename' => $file->getFilename()])}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+					</td>
+				</tr>
+				@endforeach
+			</tbody>
+	</table>
 
 </section>
 @endsection
