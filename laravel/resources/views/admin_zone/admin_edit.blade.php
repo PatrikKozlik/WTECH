@@ -16,7 +16,7 @@
 				<p class="leading-relaxed font-bold text-2xl text-center text-white">
 					ID produktu: {{$product->id}}
 				</p>
-				<form id="edit_pruduct_form" action="{{route('admin_edit_save')}}" method="POST">
+				<form id="edit_pruduct_form" action="{{route('admin_edit_save')}}" method="POST" enctype="multipart/form-data">
 					@csrf
 					<input type="hidden" name="id" value="{{$product->id}}">
 
@@ -56,6 +56,9 @@
 						<input form="edit_pruduct_form" id="available" name="available" type="checkbox" @if ($product->available) checked @endif value="1" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="available" class="ml-2 text-sm font-medium text-white">Dostupné</label>
 					</div>
+
+					<label for="files" class="text-white">Nahrať obrázky:</label>
+    				<input type="file" id="files" name="files[]" multiple>
 				</form>
 			</div>
 			<div class="flex items-center p-6 space-x-2 border-t-4 border-gray-200 rounded-b">

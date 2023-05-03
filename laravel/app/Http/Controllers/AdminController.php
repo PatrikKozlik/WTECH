@@ -77,6 +77,19 @@ class AdminController extends Controller
 
             $product->save();
 
+            $files = $request->file('files');
+
+            if (!empty($files)) {
+                $folderpath = public_path('images/' . $request->id);
+                File::ensureDirectoryExists($folderpath); // create if does not exists
+
+                foreach ($files as $file) {
+                    $filename = $file->getClientOriginalName();
+                    // $file->store();
+                    $file->move($folderpath, $filename);
+                }
+            }
+
             return redirect()->route('admin');
         }
         else
@@ -111,9 +124,17 @@ class AdminController extends Controller
 
             $product->save();
 
-            $path = public_path('images/' . $product->id);
-            if (!File::isDirectory($path)) {
-                File::makeDirectory($path);
+            $folderpath = public_path('images/' . $product->id);
+            File::ensureDirectoryExists($folderpath); // create if does not exists
+
+            $files = $request->file('files');
+
+            if (!empty($files)) {
+                foreach ($files as $file) {
+                    $filename = $file->getClientOriginalName();
+                    // $file->store();
+                    $file->move($folderpath, $filename);
+                }
             }
 
             return redirect()->route('admin');

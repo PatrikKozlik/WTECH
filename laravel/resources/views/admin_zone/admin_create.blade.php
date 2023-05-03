@@ -13,7 +13,7 @@
 				
 			</div>
 			<div class="p-6 space-y-6">
-				<form id="edit_pruduct_form" action="{{route('admin_create_product_save')}}" method="POST">
+				<form id="edit_pruduct_form" action="{{route('admin_create_product_save')}}" method="POST" enctype="multipart/form-data">
 					@csrf
 
 					<label for="product_name" class="text-white">Názov</label>
@@ -45,6 +45,9 @@
 						<input form="edit_pruduct_form" id="available" name="available" type="checkbox"  value="1" class="w-4 h-4 text-amber-600 accent-amber-800 rounded">
 						<label for="available" class="ml-2 text-sm font-medium text-white">Dostupné</label>
 					</div>
+
+					<label for="files" class="text-white">Nahrať obrázky:</label>
+    				<input type="file" id="files" name="files[]" multiple>
 				</form>
 			</div>
 			<div class="flex items-center p-6 space-x-2 border-t-4 border-gray-200 rounded-b">
