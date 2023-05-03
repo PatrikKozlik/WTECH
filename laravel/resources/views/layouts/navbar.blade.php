@@ -57,7 +57,7 @@
                     {{-- <a href="/login">{{ Auth::user()->email }}</a> --}}
                     
                     @if(Auth::user()->role_id == 4)
-                        <li class="mx-3"><a href="/home"><i class="fa-sharp fa-solid fa-table-list"></i></a></li>
+                        <li class="mx-3"><a href="{{ route('admin') }}"><i class="fa-sharp fa-solid fa-table-list"></i></a></li>
                     @else
                         <li class="mx-3"><a href="/products_list"><i class="fa-sharp fa-solid fa-table-list"></i></a></li>
                     @endif
