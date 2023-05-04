@@ -73,16 +73,15 @@ class AdminController extends Controller
             $product->category_id = $request->category_id;
             $product->supplier_id = $request->supplier_id;
             $product->details = $request->description;
-            $product->available = $request->boolean('available');
 
             $product->save();
+
+            $folderpath = public_path('images/' . $product->id);
+            File::ensureDirectoryExists($folderpath); // create if does not exist
 
             $files = $request->file('files');
 
             if (!empty($files)) {
-                $folderpath = public_path('images/' . $request->id);
-                File::ensureDirectoryExists($folderpath); // create if does not exists
-
                 foreach ($files as $file) {
                     $filename = $file->getClientOriginalName();
                     // $file->store();
@@ -90,7 +89,7 @@ class AdminController extends Controller
                 }
             }
 
-            return redirect()->route('admin');
+            return redirect()->back();
         }
         else
         {
@@ -120,12 +119,11 @@ class AdminController extends Controller
             $product->category_id = $request->category_id;
             $product->supplier_id = $request->supplier_id;
             $product->details = $request->description;
-            $product->available = $request->boolean('available');
 
             $product->save();
 
             $folderpath = public_path('images/' . $product->id);
-            File::ensureDirectoryExists($folderpath); // create if does not exists
+            File::ensureDirectoryExists($folderpath); // create if does not exist
 
             $files = $request->file('files');
 
