@@ -66,8 +66,11 @@
 			<!-- SHOP PRODUCTS-->
 			<div class="col-span-3 grid md:grid-cols-3 sm:grid-cols-1 place-items-center lg:place-items-start">
 				@foreach ($products as $product)
+					@php($path = public_path('images/'.$product->id))
+					@php($files = \File::files($path))
+					@php($firstImage = reset($files))
 					<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-80 transition duration-500 hover:scale-110">
-						<img src="{{ asset('images/'.$product->id.'.jpg') }}" alt="{{$product->product_name}}" class="p-4 w-full object-cover h-3/5">
+						<img src="{{ asset('images/'.$product->id.'/'.basename($firstImage)) }}" alt="{{$product->product_name}}" class="p-4 w-full object-cover h-3/5">
 						<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">{{$product->product_name}} </h2>
 						<p class="text-2xl pt-2 pl-4 font-bold text-white">{{$product->price}}€</p>
 						<a href="{{ route('product', ['value' => $product->id]) }}">

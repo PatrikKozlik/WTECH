@@ -21,8 +21,11 @@
 		<div class="w-10/12">
 			<div class="grid lg:grid-cols-3 place-items-center md:place-items-start md:grid-cols-2 sm:grid-cols-1">
 				@foreach ($recomend as $item)
+                    @php($path = public_path('images/'.$item->id))
+                    @php($files = \File::files($path))
+                    @php($firstImage = reset($files))
 					<div class="mt-6 bg-gradient-to-t to-amber-700 from-amber-500 rounded-2xl shadow-md shadow-gray-400 border-solid border-4 border-amber-500 md:w-10/12 w-2/3 h-96 transition duration-500 hover:scale-110">
-						<img src="{{ asset('images/'.$item->id.'.jpg') }}" alt="{{$item->product_name}}" class="p-4 w-full object-cover h-2/3">
+						<img src="{{ asset('images/'.$item->id.'/'.basename($firstImage)) }}" alt="{{$item->product_name}}" class="p-4 w-full object-cover h-2/3">
 						<h2 class="text-l w-11/12 pl-4 text-ellipsis overflow-hidden whitespace-nowrap text-white">{{$item->product_name}}</h2>
 						<p class="text-2xl pt-2 pl-4 font-bold text-white">{{$item->price}}€</p>
 						<a href="{{ route('product', ['value' => $item->id]) }}">

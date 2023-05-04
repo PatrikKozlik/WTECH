@@ -145,7 +145,6 @@ class CreateInitDatabase extends Migration
             $table->string('product_name', 40);
             $table->float('price', 8, 2);
             $table->integer('number_of_products');
-            $table->boolean('available');
             $table->text('details')->nullable();
             
             $table->unsignedBigInteger('category_id');
@@ -167,7 +166,6 @@ class CreateInitDatabase extends Migration
             $table->integer('number_of_products');
             $table->string('first_name', 25)->nullable();
             $table->string('last_name', 25)->nullable();
-            $table->string('postal_adress', 150)->nullable();
             $table->string('email', 254)->nullable();
             $table->integer('order_code');
             

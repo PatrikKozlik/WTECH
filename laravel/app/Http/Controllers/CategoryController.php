@@ -49,7 +49,12 @@ class CategoryController extends Controller
         }
         $selectedAvailable = $request->input('available');
         if(!empty($selectedAvailable)){
-            $products->whereIn('available', $selectedAvailable);
+            if(in_array(1, $selectedAvailable)){
+                $products->where('number_of_products', '>', 0);
+            }
+            else{
+                $products->where('number_of_products', '<=', 0);
+            }
         }
         if($request->order == 'expensive'){
             $products->orderBy('price', 'desc');

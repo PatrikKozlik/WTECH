@@ -26,7 +26,7 @@
                 <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->id }}</td>
                 <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->order_code }}</td>
                 <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->name }}</td>
-                <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->price*$products->amount }}</td>
+                <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->price*$product->amount }}</td>
                 <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->amount }}</td>
                 <td class="border border-slate-700 w-1/12 text-center py-1">{{ $product->date }}</td>
             </tr>

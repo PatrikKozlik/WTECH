@@ -61,8 +61,11 @@
 				<div class="flex flex-col place-items-center">
 					<div><h2 class="text-3xl w-11/12 text-white font-bold mb-4">Objednávka</h2></div>
 					@foreach($products as $product)
+						@php($path = public_path('images/'.$product->id))
+						@php($files = \File::files($path))
+						@php($firstImage = reset($files))
 						<div class="flex w-full flex-wrap py-2 gap-2 place-items-center border-b-2">
-							<div class=""><img src="{{ asset('images/'.$product->id.'.jpg') }}" alt="" class="object-cover w-16 h-16 block"></div>
+							<div class=""><img src="{{ asset('images/'.$product->id.'/'.basename($firstImage)) }}" alt="" class="object-cover w-16 h-16 block"></div>
 							<div class="flex-1"><h3 class="text-1xl text-white font-bold line-clamp-2">{{$product->product_name}}</h3></div>
 							<div><p class="amounts text-xl font-semibold text-white">{{$product->amount}} ks</p></div>
 							<div class="w-20"><p class="prices text-xl font-semibold text-right text-white">{{$product->price}}€</p></div>

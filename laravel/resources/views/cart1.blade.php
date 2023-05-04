@@ -19,8 +19,11 @@
 				@csrf
 			</form>
 			@foreach($products as $product)
+				@php($path = public_path('images/'.$product->id))
+				@php($files = \File::files($path))
+				@php($firstImage = reset($files))
 				<div class="flex flex-wrap py-2 gap-4 place-items-center border-b-2">
-					<div class=""><img src="{{ asset('images/'.$product->id.'.jpg') }}" alt="{{$product->product_name}}" class="object-cover w-20 h-20 block"></div>
+					<div class=""><img src="{{ asset('images/'.$product->id.'/'.basename($firstImage)) }}" alt="{{$product->product_name}}" class="object-cover w-20 h-20 block"></div>
 					<div class="flex-1"><h1 class="text-1xl text-white font-bold line-clamp-2">{{$product->product_name}}</h1></div>
 					
 					<div class="flex flex-nowrap gap-4 place-items-center">
