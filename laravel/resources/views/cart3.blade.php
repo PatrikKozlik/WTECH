@@ -57,14 +57,16 @@
 						@endif --}}
 					</div>
 					@auth
-						<div class="my-2">
-							<form id="reg_post" method="POST" action="{{route('finish_registered')}}">
-								@csrf
-								<button form="reg_post" type="submit" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">
-									Objednať ako prihlasený používateľ
-								</button>
-							</form>
-						</div>
+						@if($address != null)
+							<div class="my-2">
+								<form id="reg_post" method="POST" action="{{route('finish_registered')}}">
+									@csrf
+									<button form="reg_post" type="submit" class="bg-amber-600 hover:bg-stone-200 hover:text-amber-600 text-white font-bold py-2 px-4 rounded-full">
+										Objednať ako prihlasený používateľ
+									</button>
+								</form>
+							</div>
+						@endif
 					@endauth
 					
 					<div class="my-2">

@@ -106,10 +106,12 @@ class CartController extends Controller
             $need_address = 1;
         }
         $user = null;
+        $address = null;
         if(auth()->check()){
             $user = User::where('email', Auth::user()->email)->first();
+            $address = Address::where('user_id', Auth::user()->id)->first();
         }
-        return view('cart3', ['need_address' => $need_address, 'user' => $user]);
+        return view('cart3', ['need_address' => $need_address, 'user' => $user, 'address' => $address]);
     }
 
     public function save_product(Request $request){
@@ -154,18 +156,36 @@ class CartController extends Controller
             $product_in_store->save();
         }
 
-        foreach(session()->get('my_cart',[]) as $product){
-            $product_user = Product_user::create([
-                'number_of_products' => $product[1],
-                'first_name' => $request->firstname,
-                'last_name' => $request->lastname,
-                'order_code' => $order_number,
-                'transport_type' => session()->get('shipping'),
-                'payment_type' => session()->get('payment'),
-                'product_id' => $product[0],
-                'address_id' => $address->id,
-            ]);
+        if(auth()->check()){
+            foreach(session()->get('my_cart',[]) as $product){
+                $product_user = Product_user::create([
+                    'number_of_products' => $product[1],
+                    'first_name' => $request->firstname,
+                    'last_name' => $request->lastname,
+                    'order_code' => $order_number,
+                    'transport_type' => session()->get('shipping'),
+                    'payment_type' => session()->get('payment'),
+                    'product_id' => $product[0],
+                    'address_id' => $address->id,
+                    'user_id' => Auth::user()->id,
+                ]);
+            }
+        }else{
+            foreach(session()->get('my_cart',[]) as $product){
+                $product_user = Product_user::create([
+                    'number_of_products' => $product[1],
+                    'first_name' => $request->firstname,
+                    'last_name' => $request->lastname,
+                    'order_code' => $order_number,
+                    'transport_type' => session()->get('shipping'),
+                    'payment_type' => session()->get('payment'),
+                    'product_id' => $product[0],
+                    'address_id' => $address->id,
+                ]);
+            }
         }
+
+        
         Session::forget('my_cart');
         return redirect()->route('index')->with('success', 'Action was successful!');
     }
