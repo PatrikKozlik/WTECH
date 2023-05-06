@@ -150,7 +150,7 @@ class CartController extends Controller
         foreach(session()->get('my_cart',[]) as $product){
             $product_in_store = Products::find($product[0]);
             $amount = $product_in_store->number_of_products;
-            $product_in_store = $amount - $product[1];
+            $product_in_store->number_of_products = $amount - $product[1];
             $product_in_store->save();
         }
 
